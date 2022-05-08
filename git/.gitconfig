@@ -3,3 +3,5 @@
 [user]
 	name = Bryan Hill
 	email = bf361640-7eb8-4e29-80f7-5250fa6b442b@aleeas.com
+[core]
+	excludesfile = /Users/bryanhill/.gitignore_global
