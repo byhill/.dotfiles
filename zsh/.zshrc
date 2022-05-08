@@ -27,11 +27,7 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 # Set environment variables
 export LANG=en_CA.UTF-8
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+export EDITOR='nvim'
 
 # Custom Aliases
 alias zshrc="$EDITOR ~/.zshrc"
