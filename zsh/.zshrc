@@ -14,16 +14,26 @@ ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 CASE_SENSITIVE=false
 HYPHEN_INSENSITIVE=true
 COMPLETION_WAITING_DOTS="true"
-plugins=(git brew)
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-# pyenv
+# Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+function nvimvenv {
+  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
+    source "$VIRTUAL_ENV/bin/activate"
+    command nvim $@
+    deactivate
+  else
+    command nvim $@
+  fi
+}
+alias nvim=nvimvenv
 
 # Set environment variables
 export LANG=en_CA.UTF-8
@@ -31,6 +41,7 @@ export EDITOR='nvim'
 
 # Custom aliases
 alias zshrc="$EDITOR ~/.zshrc"
+alias tlmgr="sudo tlmgr"
 
 # Homebrew aliases
 alias brewo="brew update && brew outdated --greedy"
@@ -46,4 +57,12 @@ function brews() {
   echo "${blue}==>${off} ${bold}Formulae${off}"
   echo "${formulae}" | sed "s/^\(.*\):\(.*\)$/\1${blue}\2${off}/"
   echo "\n${blue}==>${off} ${bold}Casks${off}\n${casks}"
+}
+
+# Django
+alias djrs="python manage.py runserver"
+alias djmm="python manage.py makemigrations"
+alias djm="python manage.py migrate"
+function djsass() {
+    sass --watch $1/static/sass:$1/static/css
 }
