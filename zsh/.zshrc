@@ -66,3 +66,5 @@ alias djm="python manage.py migrate"
 function djsass() {
     sass --watch $1/static/sass:$1/static/css
 }
+
+alias luamake=/Users/bryanhill/lua-language-server/3rd/luamake/luamake
