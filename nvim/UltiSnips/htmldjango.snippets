@@ -1,0 +1,38 @@
+snippet {# "Comment" bA
+{# $1 #}
+endsnippet
+
+snippet {% "Django tag" b
+{% $1 %}
+endsnippet
+
+snippet {{ "Django variable" i
+{{ $1 }}
+endsnippet
+
+snippet if "Django if tag" b
+{% if $1 %}
+	$0
+{% endif %}
+endsnippet
+
+snippet elif "Django elif tag" b
+{% elif $1 %}
+	$0
+endsnippet
+
+snippet for "Django for tag" b
+{% for $1 %}
+	$0
+{% endfor %}
+endsnippet
+
+snippet block "Block" b
+{% block $1 %}
+	$2
+{% endblock %}
+endsnippet
+
+snippet iblock "Block" b
+{% block $1 %}$2{% endblock %}
+endsnippet

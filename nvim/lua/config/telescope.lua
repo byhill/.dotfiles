@@ -1,0 +1,39 @@
+local telescope = require("telescope")
+
+telescope.setup {
+    defaults = {
+        layout_config = {
+            vertical = { width = 0.8 }
+        },
+        -- mappings = {
+        --     i = {
+        --         ["<esc>"] = require("telescope.actions").close
+        --     },
+        -- },
+    },
+
+    pickers = {
+        find_files = {
+            find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+        },
+    },
+
+    extensions = {
+        fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+        },
+    },
+}
+
+telescope.load_extension('fzf')
+
+vim.cmd [[
+    nnoremap <leader>s <cmd>Telescope find_files<cr>
+    nnoremap <leader>rg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>tm <cmd>Telescope man_pages<cr>
+    nnoremap <leader>tp <cmd>Telescope pickers<cr>
+    nnoremap <leader>t" <cmd>Telescope registers<cr>
+]]
