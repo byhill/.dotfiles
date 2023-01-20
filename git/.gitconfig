@@ -1,6 +1,7 @@
 [init]
 	defaultBranch = main
 [user]
+    name = byhill
 	user = byhill
 	email = byhill.xi1ej@dralias.com
 [core]
