@@ -5,5 +5,5 @@
 	user = byhill
 	email = byhill.xi1ej@dralias.com
 [core]
-	excludesfile = /Users/bryanhill/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = nvim
