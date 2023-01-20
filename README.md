@@ -17,3 +17,11 @@ Then `cd` into this directory, and in your terminal, type
 ```
 stow -vSt ~/.config/nvim/ nvim
 ```
+To add python and node support,
+see `:help provider-python` and `:help provider-nodejs` respectively,
+and change the relevant settings.
+
+For the vim language server, run
+```
+npm install -g vim-language-server
+```
