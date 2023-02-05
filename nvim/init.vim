@@ -51,8 +51,7 @@ call plug#begin()
     Plug 'hrsh7th/nvim-cmp'
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
-" Debugging
-    Plug 'puremourning/vimspector'
+    " Plug 'dense-analysis/ale'
 
 " File navigation
     " .vim/plugin/fern.vim
@@ -412,6 +411,10 @@ let g:vimtex_compiler_latexmk = {
 \   '-interaction=nonstopmode',
 \ ],
 \}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+""""       ALE
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """       Trouble
