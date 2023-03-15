@@ -59,7 +59,7 @@ call plug#begin()
     Plug 'lambdalisue/fern-hijack.vim'
     Plug 'lambdalisue/fern-git-status.vim'
     Plug 'yuki-yano/fern-preview.vim'
-    if has('nvim')
+    if has('nvim') && !has('nvim-0.8')
         " Fix bug for Fern
         Plug 'antoinemadec/FixCursorHold.nvim'
     endif

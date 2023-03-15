@@ -1,23 +1,10 @@
-local telescope = require("telescope")
+-- https://github.com/nvim-telescope/telescope.nvim
+
+local telescope = require('telescope')
+local builtin = require('telescope.builtin')
+telescope.load_extension('fzf')
 
 telescope.setup {
-    defaults = {
-        layout_config = {
-            vertical = { width = 0.8 }
-        },
-        -- mappings = {
-        --     i = {
-        --         ["<esc>"] = require("telescope.actions").close
-        --     },
-        -- },
-    },
-
-    pickers = {
-        find_files = {
-            find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
-        },
-    },
-
     extensions = {
         fzf = {
             fuzzy = true,                    -- false will only do exact matching
@@ -28,12 +15,9 @@ telescope.setup {
     },
 }
 
-telescope.load_extension('fzf')
-
-vim.cmd [[
-    nnoremap <leader>s <cmd>Telescope find_files<cr>
-    nnoremap <leader>rg <cmd>Telescope live_grep<cr>
-    nnoremap <leader>tm <cmd>Telescope man_pages<cr>
-    nnoremap <leader>tp <cmd>Telescope pickers<cr>
-    nnoremap <leader>t" <cmd>Telescope registers<cr>
-]]
+vim.keymap.set('n', '<leader>s',  builtin.find_files, {})
+vim.keymap.set('n', '<leader>rg', builtin.live_grep,  {})
+vim.keymap.set('n', '<leader>tm', builtin.man_pages,  {})
+vim.keymap.set('n', '<leader>th', builtin.help_tags,  {})  -- search nvim help
+vim.keymap.set('n', '<leader>tp', builtin.builtin,    {})  -- search all pickers
+vim.keymap.set('n', '<leader>t"', builtin.registers,  {})
