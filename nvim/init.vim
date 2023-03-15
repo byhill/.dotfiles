@@ -77,6 +77,7 @@ call plug#begin()
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-commentary'
+    Plug 'windwp/nvim-autopairs'
 
 " Git support
     Plug 'tpope/vim-fugitive'
@@ -451,3 +452,8 @@ lua require('config/treesitter')
 """"       Telescope
 """""""""""""""""""""""""""""""""""""""""""""""""""
 lua require('config/telescope')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+""""       Autopairs
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+lua require('config/autopairs')
