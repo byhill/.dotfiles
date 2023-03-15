@@ -14,7 +14,7 @@ ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 CASE_SENSITIVE=false
 HYPHEN_INSENSITIVE=true
 COMPLETION_WAITING_DOTS="true"
-plugins=(git)
+plugins=(git z)
 source $ZSH/oh-my-zsh.sh
 
 # Pyenv
@@ -41,7 +41,6 @@ export EDITOR='nvim'
 
 # Custom aliases
 alias zshrc="$EDITOR ~/.zshrc"
-alias tlmgr="sudo tlmgr"
 
 # Homebrew aliases
 alias brewo="brew update && brew outdated --greedy"
@@ -68,3 +67,6 @@ function djsass() {
 }
 
 alias luamake=/Users/bryanhill/lua-language-server/3rd/luamake/luamake
+
+# LaTeX
+alias tlmgr="sudo tlmgr"
