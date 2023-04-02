@@ -1,4 +1,4 @@
-"" Intzy's .vimrc
+"" byhill's .vimrc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """"       LEADER KEYS
@@ -33,7 +33,7 @@ call plug#begin()
 " Package manager
     Plug 'junegunn/vim-plug'
 
-" Util
+" Utilities for other plugins
     Plug 'nvim-lua/plenary.nvim'
 
 " LSP, Diagnostics, Linting, Formatting
