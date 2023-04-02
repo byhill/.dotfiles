@@ -37,6 +37,7 @@ call plug#begin()
     Plug 'nvim-lua/plenary.nvim'
 
 " LSP, Diagnostics, Linting, Formatting
+    Plug 'dense-analysis/ale'
     Plug 'neovim/nvim-lspconfig'
     Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
@@ -416,6 +417,16 @@ let g:vimtex_compiler_latexmk = {
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """"       ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_use_neovim_diagnostics_api = 1
+let g:ale_linters_explicit = 1
+let g:ale_sign_priority = 1
+let g:ale_echo_msg_format = '[%linter%] (%code%) %s'
+let g:ale_fixers = {
+        \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+let g:ale_fix_on_save = 1
+
+nmap <leader>af <Plug>(ale_fix)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """       Trouble
@@ -438,10 +449,8 @@ nnoremap <leader>xt <cmd>TroubleToggle lsp_type_definitions<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 lua require('config/cmp')
 lua require('config/lsp')
-lua require('config/null-ls')
-lua << EOF
-require('nvim-lightbulb').setup({autocmd = {enabled = true}})
-EOF
+" lua require('config/null-ls')
+lua require('nvim-lightbulb').setup({autocmd = {enabled = true}})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """"       Treesitter

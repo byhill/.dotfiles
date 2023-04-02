@@ -22,7 +22,9 @@ local on_attach = function(client, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>lf', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
 end
 
 
