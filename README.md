@@ -9,6 +9,7 @@ Then, in the `.dotfiles` directoy, do the following.
 stow -vSt ~ git
 stow -vSt ~ zsh
 stow -vSt ~/.julia julia
+stow -vSt ~/.config helix
 ```
 
 ## Neovim
