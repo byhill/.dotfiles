@@ -17,18 +17,7 @@ vim.g.loaded_perl_provider = 0
 -----------------------------------------------------------
 --  Install the plugin manager lazy.nvim if not already installed
 -----------------------------------------------------------
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
-end
-vim.opt.rtp:prepend(lazypath)
+require('lazyinstall')
 
 -----------------------------------------------------------
 --  Install plugins
@@ -52,16 +41,22 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', opts = {} }, -- Requires a call to setup()
-      'folke/neodev.nvim',
+      { 'j-hui/fidget.nvim', opts = {} }, -- Requires a call to setup()...
+      { 'folke/neodev.nvim', opts = {} }, -- dito...
     },
   },
 
   -- Autocompletion
-  -- {
-  --   'hrsh7th/nvim-cmp',
-  --   dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  -- },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline' },
+  },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
@@ -78,18 +73,16 @@ require('lazy').setup({
     },
   },
 
-  -- Colourscheme
+  -- Colourcheme
   {
     'ellisonleao/gruvbox.nvim',
-    -- 'navarasu/onedark.nvim',
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'gruvbox'
-    end,
+    config = function() vim.cmd.colorscheme 'gruvbox' end,
   },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
 
   -- Telescope
   {
@@ -102,6 +95,7 @@ require('lazy').setup({
     build = 'make',
     cond = vim.fn.executable 'make' == 1
   },
+
 
   -- Treesitter
   {
