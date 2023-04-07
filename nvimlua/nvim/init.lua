@@ -120,6 +120,7 @@ require('settings')
 
 require('plugins/telescope')
 require('plugins/treesitter')
+require('plugins/cmp')
 require('plugins/lsp')
 
 vim.cmd('source ~/.config/nvim/plugins/fern.vim')
