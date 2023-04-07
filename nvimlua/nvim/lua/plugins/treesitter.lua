@@ -1,11 +1,14 @@
 require('nvim-treesitter.configs').setup {
+
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {'c', 'lua', 'luadoc', 'luap', 'markdown', 'markdown_inline', 'python', 'vim', 'vimdoc'},
 
   highlight = {
-    enable = true
+    enable = false,
   },
+
   indent = { enable = true, disable = { 'python' } },
+
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -15,6 +18,7 @@ require('nvim-treesitter.configs').setup {
       node_decremental = '<c-m>',
     },
   },
+
   textobjects = {
     select = {
       enable = true,

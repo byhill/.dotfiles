@@ -28,6 +28,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
   'tpope/vim-unimpaired',
+  'JuliaEditorSupport/julia-vim',
   'szw/vim-maximizer',
 
   'lambdalisue/fern.vim',
