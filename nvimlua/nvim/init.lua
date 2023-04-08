@@ -31,12 +31,32 @@ require('lazy').setup({
   'JuliaEditorSupport/julia-vim',
   'szw/vim-maximizer',
 
-  'lambdalisue/fern.vim',
-  'lambdalisue/fern-hijack.vim',
-  'lambdalisue/fern-git-status.vim',
-
   'lukas-reineke/indent-blankline.nvim',
 
+
+  -- Tree navigation
+  {
+    'lambdalisue/fern.vim',
+    dependencies = { 'lambdalisue/fern-hijack.vim', 'lambdalisue/fern-git-status.vim', },
+    config = function()
+      vim.cmd('source ~/.config/nvim/plugins/fern.vim')
+    end,
+  },
+
+
+  -- Colourcheme
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup {
+        contrast = "hard",
+      }
+      vim.cmd.colorscheme('gruvbox')
+    end,
+  },
+
+  -- LSP (Language Server Protocol)
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -45,18 +65,26 @@ require('lazy').setup({
       { 'j-hui/fidget.nvim', opts = {} }, -- Requires a call to setup()...
       { 'folke/neodev.nvim', opts = {} }, -- dito...
     },
+    config = function() require('plugin_config/lsp').setup() end
+  },
+
+  -- Snippets
+  {
+    'L3MON4D3/LuaSnip',
+    config = function() require('plugin_config/snip').setup() end,
   },
 
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'L3MON4D3/LuaSnip',
-      'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline' },
+      'hrsh7th/cmp-cmdline'
+    },
+    config = function() require('plugin_config/cmp').setup() end,
   },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -74,12 +102,6 @@ require('lazy').setup({
     },
   },
 
-  -- Colourcheme
-  {
-    'ellisonleao/gruvbox.nvim',
-    priority = 1000,
-    config = function() vim.cmd.colorscheme 'gruvbox' end,
-  },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -89,12 +111,15 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     version = '*',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    cond = vim.fn.executable 'make' == 1
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        cond = vim.fn.executable 'make' == 1
+      },
+    },
+    config = function() require('plugin_config/telescope').setup() end,
   },
 
 
@@ -106,10 +131,11 @@ require('lazy').setup({
     },
     config = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
+      require('plugin_config/treesitter').setup()
     end,
   },
 
-  -- require 'kickstart.plugins.autoformat',
+  -- require 'plugins/autoformat',
   -- require 'kickstart.plugins.debug',
   --  { import = 'custom.plugins' },
 }, {})
@@ -118,10 +144,3 @@ require('lazy').setup({
 require('autocommands')
 require('keymaps')
 require('settings')
-
-require('plugins/telescope')
-require('plugins/treesitter')
-require('plugins/cmp')
-require('plugins/lsp')
-
-vim.cmd('source ~/.config/nvim/plugins/fern.vim')
