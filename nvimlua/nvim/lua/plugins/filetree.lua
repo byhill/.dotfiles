@@ -1,10 +1,8 @@
+-- For all defaults for neo-tree, see
+-- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/v2.x/lua/neo-tree/defaults.lua
+
 local setup = function()
-  local neotree = require("neo-tree")
-
   vim.keymap.set('n', '<leader>f', ':Neotree toggle source=filesystem position=left <cr>')
-  vim.keymap.set('n', '<leader><S-f>', ':Neotree toggle source=filesystem position=float <cr>')
-
-
 
   -- Unless you are still migrating, remove the deprecated commands from v1.x
   vim.g.neo_tree_remove_legacy_commands = 1
@@ -21,7 +19,7 @@ local setup = function()
   -- NOTE: this is changed from v1.x, which used the old style of highlight groups
   -- in the form "LspDiagnosticsSignWarning"
 
-  neotree.setup({
+  require("neo-tree").setup({
     close_if_last_window = true,
     popup_border_style = "rounded",
     enable_git_status = true,
@@ -92,8 +90,8 @@ local setup = function()
         ["<cr>"] = "open",
         ["<esc>"] = "revert_preview",
         ["P"] = { "toggle_preview", config = { use_float = true } },
-        ["S"] = "open_split",
-        ["s"] = "open_vsplit",
+        ["S"] = "open_split",  -- ["S"] = "split_with_window_picker",
+        ["s"] = "open_vsplit", -- ["s"] = "vsplit_with_window_picker",
         ["h"] = function(state)
           local node = state.tree:get_node()
           if (node.type == "directory" or node:has_children()) and node:is_expanded() then
@@ -114,21 +112,16 @@ local setup = function()
             require("neo-tree.sources.filesystem.commands").open(state)
           end
         end,
-        -- ["S"] = "split_with_window_picker",
-        -- ["s"] = "vsplit_with_window_picker",
         ["t"] = "open_tabnew",
         -- ["<cr>"] = "open_drop",
         -- ["t"] = "open_tab_drop",
         ["w"] = "open_with_window_picker",
-        --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
-        ["C"] = "close_node",
-        -- ['C'] = 'close_all_subnodes',
+        -- ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+        ['C'] = 'close_all_subnodes',
         ["z"] = "close_all_nodes",
         ["Z"] = "expand_all_nodes",
         ["a"] = {
           "add",
-          -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
-          -- some commands may take optional config options, see `:h neo-tree-mappings` for details
           config = {
             show_path = "none" -- "none", "relative", "absolute"
           }
@@ -179,20 +172,15 @@ local setup = function()
           --".null-ls_*",
         },
       },
-      follow_current_file = false,            -- This will find and focus the file in the active buffer every
-      -- time the current file is changed while the tree is open.
-      group_empty_dirs = false,               -- when true, empty folders will be grouped together
-      hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-      -- in whatever position is specified in window.position
-      -- "open_current",  -- netrw disabled, opening a directory opens within the
-      -- window like netrw would, regardless of window.position
-      -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-      use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
-      -- instead of relying on nvim autocmd events.
+      follow_current_file = false,
+      group_empty_dirs = false,
+      hijack_netrw_behavior = "open_default",
       window = {
         mappings = {
           ["<bs>"] = "navigate_up",
+          ["O"] = "navigate_up",
           ["."] = "set_root",
+          ["o"] = "set_root",
           ["H"] = "toggle_hidden",
           ["/"] = "fuzzy_finder",
           ["D"] = "fuzzy_finder_directory",
@@ -243,7 +231,7 @@ local setup = function()
       {
         event = "file_opened",
         handler = function()
-          neotree.close_all()
+          require("neo-tree").close_all()
         end
       },
     },

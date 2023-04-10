@@ -1,5 +1,4 @@
-setup = function()
-
+local setup = function()
   local luasnip = require('luasnip')
   local cmp = require('cmp')
   local m = cmp.mapping
@@ -73,7 +72,6 @@ setup = function()
       { name = 'cmdline' }
     })
   })
-
 end
 
 
