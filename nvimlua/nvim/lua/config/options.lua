@@ -1,3 +1,4 @@
+-- See also, :options
 local set = vim.opt
 
 -- Tabs and indentation

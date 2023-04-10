@@ -20,8 +20,8 @@ return {
           dark = "wave", -- or "dragon"
           light = "lotus"
         },
-        -- vim.cmd.colorscheme('kanagawa')
       }
+      vim.cmd.colorscheme('kanagawa')
     end,
   },
   {
@@ -29,7 +29,7 @@ return {
     priority = 1000,
     config = function()
       vim.g.gruvbox_baby_telescope_theme = 1
-      vim.cmd.colorscheme('gruvbox-baby')
+      -- vim.cmd.colorscheme('gruvbox-baby')
     end,
   },
   {
@@ -38,8 +38,18 @@ return {
     config = function()
       require('gruvbox').setup {
         contrast = "hard",
-        -- vim.cmd.colorscheme('gruvbox')
       }
+      -- vim.cmd.colorscheme('gruvbox')
     end
+  },
+  {
+    'rose-pine/nvim',
+    name = 'rose-pine',
+    config = function()
+      require('rose-pine').setup {
+        variant = 'moon', -- 'auto', 'main', 'moon', 'dawn'
+      }
+      -- vim.cmd.colorscheme('rose-pine')
+    end,
   },
 }

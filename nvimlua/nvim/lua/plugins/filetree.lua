@@ -2,7 +2,7 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/v2.x/lua/neo-tree/defaults.lua
 
 local setup = function()
-  vim.keymap.set('n', '<leader>f', ':Neotree toggle source=filesystem position=left <cr>')
+  vim.keymap.set('n', '<leader>f', ':Neotree toggle source=filesystem position=left <cr>', { silent = true })
 
   -- Unless you are still migrating, remove the deprecated commands from v1.x
   vim.g.neo_tree_remove_legacy_commands = 1

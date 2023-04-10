@@ -14,17 +14,22 @@ vim.g.node_host_prog = '/usr/local/bin/neovim-node-host'
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
------------------------------------------------------------
---  Install the plugin manager lazy.nvim if not already installed
------------------------------------------------------------
-require('lazyinstall')
+require('config.autocommands')
+require('config.keymaps')
+require('config.options')
 
 -----------------------------------------------------------
 --  Install plugins
 -----------------------------------------------------------
+require('lazyinstall')
 require('lazy').setup('plugins')
 
 
-require('autocommands')
-require('keymaps')
-require('settings')
+-----------------------------------------------------------
+--  Set Lilypond
+-----------------------------------------------------------
+vim.cmd([[
+  filetype off
+  set runtimepath+=/usr/local/share/lilypond/2.24.1/vim/
+  filetype on
+]])

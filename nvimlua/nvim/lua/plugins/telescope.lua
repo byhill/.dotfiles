@@ -22,14 +22,15 @@ local setup = function()
   end
 
   -- LSP telescope mappings are defined elsewhere
-  nmap('<leader>sf', builtin.find_files)
-  nmap('<leader>sg', builtin.live_grep)
-  nmap('<leader>sw', builtin.grep_string)
-  nmap('<leader>sm', builtin.man_pages)
-  nmap('<leader>sh', builtin.help_tags) -- search nvim help
-  nmap('<leader>sp', builtin.builtin)   -- search all pickers
-  nmap('<leader>s"', builtin.registers)
-  nmap('<leader>s/', function()
+  nmap('<leader>s', builtin.find_files)
+  nmap('<leader>r', builtin.live_grep)
+  nmap('<leader>g', builtin.grep_string)
+  nmap('<leader>tm', builtin.man_pages)
+  nmap('<leader>th', builtin.help_tags) -- search nvim help
+  nmap('<leader>tp', builtin.builtin)   -- search all pickers
+  nmap('<leader>t"', builtin.registers)
+  nmap('<leader>tc', builtin.colorscheme)
+  nmap('<leader>t/', function()
     builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
       winblend = 10,
       previewer = false,
