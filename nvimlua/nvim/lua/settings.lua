@@ -17,6 +17,7 @@ set.background = "dark"
 set.number = true
 set.hlsearch = false
 set.signcolumn = 'yes'
+set.scrolloff = 3
 
 -- Remove a couple types of annoying messages
 set.shortmess:append('cs')

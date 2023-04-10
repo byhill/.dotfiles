@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        "comment", "help", "html", "lua", "python", "toml", "vim",
+        "comment", "html", "lua", "python", "toml", "vim", "vimdoc",
     },
     highlight = {
         enable = true,
