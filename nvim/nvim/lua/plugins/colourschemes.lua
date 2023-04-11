@@ -49,13 +49,13 @@ return {
       require('rose-pine').setup {
         variant = 'moon', -- 'auto', 'main', 'moon', 'dawn'
       }
-      vim.cmd.colorscheme('rose-pine')
+      -- vim.cmd.colorscheme('rose-pine')
     end,
   },
   {
     'savq/melange-nvim',
     config = function()
-      -- vim.cmd.colorscheme('melange')
+      vim.cmd.colorscheme('melange')
     end,
   },
   {
