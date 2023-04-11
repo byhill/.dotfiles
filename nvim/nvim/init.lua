@@ -22,7 +22,7 @@ require('config.options')
 --  Install plugins
 -----------------------------------------------------------
 require('lazyinstall')
-require('lazy').setup('plugins')
+require('lazy').setup('plugins', { change_detection = { enabled = false } })
 
 
 -----------------------------------------------------------

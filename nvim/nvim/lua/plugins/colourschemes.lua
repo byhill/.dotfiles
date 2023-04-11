@@ -21,7 +21,7 @@ return {
           light = "lotus"
         },
       }
-      vim.cmd.colorscheme('kanagawa')
+      -- vim.cmd.colorscheme('kanagawa')
     end,
   },
   {
@@ -49,7 +49,20 @@ return {
       require('rose-pine').setup {
         variant = 'moon', -- 'auto', 'main', 'moon', 'dawn'
       }
-      -- vim.cmd.colorscheme('rose-pine')
+      vim.cmd.colorscheme('rose-pine')
     end,
   },
+  {
+    'savq/melange-nvim',
+    config = function()
+      -- vim.cmd.colorscheme('melange')
+    end,
+  },
+  {
+    'mcchrish/zenbones.nvim',
+    dependencies = { 'rktjmp/lush.nvim' },
+    config = function()
+      -- vim.cmd.colorscheme('zenbones')
+    end,
+  }
 }
