@@ -1,7 +1,7 @@
 local setup_bufferline = function()
   require('bufferline').setup {
     options = {
-      numbers = "buffer_id",
+      -- numbers = "buffer_id",
     }
   }
 end
