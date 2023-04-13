@@ -12,7 +12,7 @@ set.smartindent = true
 
 -- Colourscheme
 set.termguicolors = true
-set.background = 'light' -- 'light' or 'dark'
+set.background = 'dark' -- 'light' or 'dark'
 
 -- Add line numbers and sign column
 set.number = true

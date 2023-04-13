@@ -10,6 +10,7 @@
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "gitsigns.nvim": { "branch": "main", "commit": "372d5cb485f2062ac74abc5b33054abac21d8b58" },
   "gruvbox-baby": { "branch": "main", "commit": "7a3f1142ec3dc380f4d4af0df32bda3a85f959a3" },
+  "gruvbox-material": { "branch": "master", "commit": "b12f46903867939b963c8c20abb27dd507d77054" },
   "gruvbox.nvim": { "branch": "main", "commit": "e685aebb5967c2597858a41779a8d38321253509" },
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
   "julia-vim": { "branch": "master", "commit": "fca7e3e59e6f9417d3fd77bac50d4b820a3e8bc4" },

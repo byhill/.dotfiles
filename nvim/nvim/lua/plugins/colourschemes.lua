@@ -25,6 +25,15 @@ return {
     end,
   },
   {
+    'sainnhe/gruvbox-material',
+    priority = 1000,
+    config = function()
+      vim.g.gruvbox_material_foreground = 'original'
+      vim.g.gruvbox_material_background = 'hard'
+      vim.cmd.colorscheme('gruvbox-material')
+    end,
+  },
+  {
     'luisiacc/gruvbox-baby',
     priority = 1000,
     config = function()
@@ -37,7 +46,7 @@ return {
     priority = 1000,
     config = function()
       require('gruvbox').setup {
-        contrast = "",
+        contrast = 'hard',
       }
       -- vim.cmd.colorscheme('gruvbox')
     end
@@ -45,6 +54,7 @@ return {
   {
     'rose-pine/nvim',
     name = 'rose-pine',
+    priority = 1000,
     config = function()
       require('rose-pine').setup {
         variant = 'dawn', -- 'auto', 'main', 'moon', 'dawn'
@@ -54,22 +64,25 @@ return {
   },
   {
     'savq/melange-nvim',
+    priority = 1000,
     config = function()
       -- vim.cmd.colorscheme('melange')
     end,
   },
   {
     'mcchrish/zenbones.nvim',
+    priority = 1000,
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-      vim.cmd.colorscheme('zenbones')
+      -- vim.cmd.colorscheme('zenbones')
     end,
   },
   {
     'EdenEast/nightfox.nvim',
+    priority = 1000,
     config = function()
       require('nightfox').setup {}
-      -- vim.cmd.colorscheme('nightfox')
+      -- vim.cmd.colorscheme('dayfox')
     end
   }
 }
