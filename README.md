@@ -14,15 +14,7 @@ stow -vSt ~/.config helix
 
 ## Neovim
 First ensure that the directory `~/.config/nvim/` exists.
-Then `cd` into this directory, and in your terminal, type
+Then `cd` into this directory, and in your terminal, enter
 ```
 stow -vSt ~/.config/ nvim
-```
-To add python and node support,
-see `:help provider-python` and `:help provider-nodejs` respectively,
-and change the relevant settings.
-
-For the vim language server, run
-```
-npm install -g vim-language-server
 ```

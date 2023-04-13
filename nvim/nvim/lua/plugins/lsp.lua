@@ -20,7 +20,7 @@ local setup = function()
 
 
   --  This function gets run when an LSP connects to a particular buffer.
-  local on_attach = function(_, bufnr)
+  local on_attach = function(client, bufnr)
     local buf = vim.lsp.buf
     local telescope = require('telescope.builtin')
 
@@ -35,6 +35,8 @@ local setup = function()
 
     local listworkspace = function() print(vim.inspect(buf.list_workspace_folders())) end
 
+    -- This remove semantic highlighting.  Mainly for gruvbox
+    -- client.server_capabilities.semanticTokensProvider = nil
 
     nmap('<leader>rn', buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', buf.code_action, '[C]ode [A]ction')
@@ -58,6 +60,7 @@ local setup = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+
   -- Setup each LSP server
   mason_lsp.setup_handlers {
     function(server_name)
@@ -73,7 +76,7 @@ local setup = function()
 
 
   -- Switch for controlling whether you want autoformatting.
-  --  Use :KickstartFormatToggle to toggle autoformatting on or off
+  --  Use :FormatToggle to toggle autoformatting on or off
   local format_is_enabled = true
   vim.api.nvim_create_user_command('FormatToggle', function()
     format_is_enabled = not format_is_enabled

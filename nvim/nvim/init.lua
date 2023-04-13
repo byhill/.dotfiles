@@ -20,6 +20,6 @@ vim.g.loaded_perl_provider = 0
 require('config')
 
 -----------------------------------------------------------
---  Install plugins
+--  Install and configure plugins
 -----------------------------------------------------------
 require('lazy').setup('plugins', { change_detection = { enabled = false } })

@@ -37,7 +37,7 @@ return {
     priority = 1000,
     config = function()
       require('gruvbox').setup {
-        contrast = "hard",
+        contrast = "",
       }
       -- vim.cmd.colorscheme('gruvbox')
     end
@@ -47,7 +47,7 @@ return {
     name = 'rose-pine',
     config = function()
       require('rose-pine').setup {
-        variant = 'moon', -- 'auto', 'main', 'moon', 'dawn'
+        variant = 'dawn', -- 'auto', 'main', 'moon', 'dawn'
       }
       -- vim.cmd.colorscheme('rose-pine')
     end,
@@ -55,14 +55,21 @@ return {
   {
     'savq/melange-nvim',
     config = function()
-      vim.cmd.colorscheme('melange')
+      -- vim.cmd.colorscheme('melange')
     end,
   },
   {
     'mcchrish/zenbones.nvim',
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-      -- vim.cmd.colorscheme('zenbones')
+      vim.cmd.colorscheme('zenbones')
     end,
+  },
+  {
+    'EdenEast/nightfox.nvim',
+    config = function()
+      require('nightfox').setup {}
+      -- vim.cmd.colorscheme('nightfox')
+    end
   }
 }

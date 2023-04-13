@@ -2,7 +2,8 @@ local setup = function()
   require('nvim-treesitter.configs').setup {
 
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'lua', 'luadoc', 'luap', 'markdown', 'markdown_inline', 'python', 'julia', 'vim',
+    ensure_installed = { 'c', 'javascript', 'lua', 'luadoc', 'luap', 'markdown', 'markdown_inline', 'python', 'julia',
+      'vim',
       'vimdoc' },
 
     highlight = {
