@@ -88,7 +88,6 @@ local setup = function()
       },
       mappings = {
         ["<cr>"] = "open",
-        ["<esc>"] = "revert_preview",
         ["P"] = { "toggle_preview", config = { use_float = true } },
         ["S"] = "open_split",  -- ["S"] = "split_with_window_picker",
         ["s"] = "open_vsplit", -- ["s"] = "vsplit_with_window_picker",
@@ -141,6 +140,7 @@ local setup = function()
         --}
         ["m"] = "move",
         ["q"] = "close_window",
+        ["<esc>"] = "close_window",
         ["R"] = "refresh",
         ["?"] = "show_help",
         ["<"] = "prev_source",
