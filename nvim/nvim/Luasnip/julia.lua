@@ -40,6 +40,8 @@ return {
   ]], { i(1, "true"), i(2, "nothing"), i(3, "nothing") })
     ),
 
+    s({ trig = "div ", snippetType = "autosnippet" }, t("÷ ")),
+    s({ trig = "div=", snippetType = "autosnippet" }, t("÷=")),
     s({ trig = "pe_setup", desc = "Boilerplate code for a project euler problem" }, fmt([[
       module Problem{}
 
@@ -49,7 +51,7 @@ return {
 
       Problem {} of Project Euler.
 
-      https://projecteuler.net/problem={}
+      [https://projecteuler.net/problem={}](https://projecteuler.net/problem={})
       """
       function problem{}()
         {}
@@ -60,7 +62,7 @@ return {
       end  # module Problem{}
       using .Problem{}
       export problem{}
-      ]], { i(1), rep(1), rep(1), rep(1), rep(1), i(0, "return 0"), rep(1), rep(1), rep(1), rep(1) }),
+      ]], { i(1), rep(1), rep(1), rep(1), rep(1), rep(1), i(0, "return 0"), rep(1), rep(1), rep(1), rep(1) }),
         { condition = b }
     ),
 }
