@@ -21,7 +21,7 @@ return {
           light = "lotus"
         },
       }
-      -- vim.cmd.colorscheme('kanagawa')
+      vim.cmd.colorscheme('kanagawa')
     end,
   },
   {
@@ -30,7 +30,7 @@ return {
     config = function()
       vim.g.gruvbox_material_foreground = 'original'
       vim.g.gruvbox_material_background = 'hard'
-      vim.cmd.colorscheme('gruvbox-material')
+      -- vim.cmd.colorscheme('gruvbox-material')
     end,
   },
   {
@@ -82,7 +82,7 @@ return {
     priority = 1000,
     config = function()
       require('nightfox').setup {}
-      -- vim.cmd.colorscheme('dayfox')
+      -- vim.cmd.colorscheme('nightfox')
     end
   }
 }

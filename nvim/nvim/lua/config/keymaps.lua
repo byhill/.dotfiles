@@ -28,7 +28,8 @@ nnoremap('<leader>vl', ':Lazy<cr>', { silent = true })
 -- Fix indentation
 nnoremap('<leader>i', "gg=G''")
 
-
+-- Window Remaps
+-- ws, wa, wr, and wl are taken by lsp
 nnoremap('<leader>wh', '<c-W>h')
 nnoremap('<leader>wl', '<c-W>l')
 nnoremap('<leader>wj', '<c-W>j')
@@ -43,6 +44,9 @@ nnoremap('<leader>wJ', '<c-W>J')
 nnoremap('<leader>wK', '<c-W>K')
 nnoremap('<leader>wm', ':MaximizerToggle<cr>', { silent = true })
 
+-- Buffer Remaps
+nnoremap('<leader>bd', ':bd<cr>')
+nnoremap('<leader>ba', ':%bd|e#|bd#<cr>')
 
 
 

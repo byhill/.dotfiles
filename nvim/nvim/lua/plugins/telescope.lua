@@ -23,7 +23,7 @@ local setup = function()
 
   -- LSP telescope mappings are defined elsewhere
   nmap('<leader>s', builtin.find_files)
-  nmap('<leader>r', builtin.live_grep)
+  nmap('<leader>rg', builtin.live_grep)
   nmap('<leader>g', builtin.grep_string)
   nmap('<leader>tm', builtin.man_pages)
   nmap('<leader>th', builtin.help_tags) -- search nvim help

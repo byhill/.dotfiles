@@ -97,6 +97,7 @@ local setup = function()
             state.commands.toggle_node(state)
           else
             require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+            state.commands.toggle_node(state)
           end
         end,
         ["l"] = function(state)
@@ -172,7 +173,11 @@ local setup = function()
           --".null-ls_*",
         },
       },
-      follow_current_file = false,
+      follow_current_file = {
+        enabled = false,         -- This will find and focus the file in the active buffer every time
+        --                       -- the current file is changed while the tree is open.
+        leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+      },
       group_empty_dirs = false,
       hijack_netrw_behavior = "open_default",
       window = {
@@ -201,9 +206,13 @@ local setup = function()
       }
     },
     buffers = {
-      follow_current_file = true, -- This will find and focus the file in the active buffer every
+      follow_current_file = {
+        enabled = true,          -- This will find and focus the file in the active buffer every time
+        --                       -- the current file is changed while the tree is open.
+        leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+      },
       -- time the current file is changed while the tree is open.
-      group_empty_dirs = true,    -- when true, empty folders will be grouped together
+      group_empty_dirs = true, -- when true, empty folders will be grouped together
       show_unloaded = true,
       window = {
         mappings = {

@@ -28,6 +28,7 @@ set.splitbelow = true
 set.splitright = true
 
 -- Wrapped lines will still obey indentation
+set.wrap = false
 set.breakindent = true
 
 -- Sync clipboard between OS and Neovim.

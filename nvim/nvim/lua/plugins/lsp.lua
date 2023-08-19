@@ -50,7 +50,7 @@ local setup = function()
     nmap('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
     nmap('<leader>wa', buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
     nmap('<leader>wr', buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    nmap('<leader>wl', listworkspace, '[W]orkspace [L]ist Folders')
+    nmap('<leader>wf', listworkspace, '[W]orkspace List [F]olders')
 
     command('Format', function() buf.format() end, 'Format current buffer with LSP')
   end

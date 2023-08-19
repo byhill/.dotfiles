@@ -3,7 +3,9 @@ return {
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
   'tpope/vim-unimpaired',
-  'JuliaEditorSupport/julia-vim',
+
+  'vimwiki/vimwiki',
+
   'szw/vim-maximizer',
 
   'lukas-reineke/indent-blankline.nvim',
