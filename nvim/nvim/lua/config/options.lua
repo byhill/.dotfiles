@@ -19,6 +19,7 @@ set.number = true
 set.hlsearch = false
 set.signcolumn = 'yes'
 set.scrolloff = 3
+set.laststatus = 2
 
 -- Remove a couple types of annoying messages
 set.shortmess:append('cs')

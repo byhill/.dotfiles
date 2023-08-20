@@ -1,4 +1,5 @@
 -- Options to add `gf` functionality inside `.lua` files.
+-- https://github.com/sam4llis/nvim-lua-gf
 vim.opt_local.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
 vim.opt_local.includeexpr = "substitute(v:fname,'\\.','/','g')"
 

@@ -58,6 +58,14 @@ function brews() {
   echo "\n${blue}==>${off} ${bold}Casks${off}\n${casks}"
 }
 
+# Audio
+function flac_to_alac() {
+  for i in *.flac; do 
+    echo $i; 
+    ffmpeg -i "$i" -y -v 0 -vcodec copy -acodec alac  "${i%.flac}".m4a && rm -f "$i"; 
+  done
+}
+
 # Django
 alias djrs="python manage.py runserver"
 alias djmm="python manage.py makemigrations"
