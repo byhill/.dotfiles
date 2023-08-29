@@ -21,7 +21,7 @@ return {
           light = "lotus"
         },
       }
-      vim.cmd.colorscheme('kanagawa')
+      -- vim.cmd.colorscheme('kanagawa')
     end,
   },
   {
@@ -48,7 +48,7 @@ return {
       require('gruvbox').setup {
         contrast = 'hard',
       }
-      -- vim.cmd.colorscheme('gruvbox')
+      vim.cmd.colorscheme('gruvbox')
     end
   },
   {

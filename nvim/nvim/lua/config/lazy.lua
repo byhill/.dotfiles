@@ -10,3 +10,10 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+
+local function nnoremap(input, output, options)
+  vim.keymap.set('n', input, output, options)
+end
+
+nnoremap('<leader>ll', ':Lazy<cr>', { silent = true })
+nnoremap('<leader>lu', ':Lazy update<cr>')

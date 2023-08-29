@@ -1,3 +1,5 @@
+-- https://github.com/windwp/nvim-autopairs
+
 local setup_autopairs = function()
   require('nvim-autopairs').setup {}
 end

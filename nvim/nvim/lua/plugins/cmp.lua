@@ -1,3 +1,6 @@
+-- Main plugin: https://github.com/hrsh7th/nvim-cmp
+-- List of sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+
 local setup = function()
   local luasnip = require('luasnip')
   local cmp = require('cmp')
@@ -33,7 +36,7 @@ local setup = function()
   end
 
 
-  cmp.setup {
+  cmp.setup({
     snippet = {
       expand = function(args) luasnip.lsp_expand(args.body) end,
     },
@@ -57,7 +60,7 @@ local setup = function()
       { name = 'luasnip' },
       { name = 'buffer' },
     }
-  }
+  })
 
   cmp.setup.cmdline('/', {
     sources = {
@@ -66,11 +69,10 @@ local setup = function()
   })
 
   cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
+    sources = {
+      { name = 'path' },
       { name = 'cmdline' }
-    })
+    }
   })
 end
 

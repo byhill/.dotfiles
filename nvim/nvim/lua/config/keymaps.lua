@@ -19,11 +19,10 @@ nnoremap('<c-R>', 'U')
 
 -- <leader>v commands
 nnoremap('<leader>ve', ':edit $MYVIMRC<cr>', { silent = true })
-nnoremap('<leader>vs', ':source %:p<cr>', { silent = true })
 nnoremap('<leader>vw', ':echo @%<cr>')
 nnoremap('<leader>vh', ':cd %:h<cr>:pwd<cr>')
 nnoremap('<leader>vz', ':edit ~/.zshrc<cr>', { silent = true })
-nnoremap('<leader>vl', ':Lazy<cr>', { silent = true })
+-- nnoremap('<leader>vs', ':source %:p<cr>', { silent = true }) -- Lazy doesn't support this
 
 -- Fix indentation
 nnoremap('<leader>i', "gg=G''")
@@ -47,8 +46,6 @@ nnoremap('<leader>wm', ':MaximizerToggle<cr>', { silent = true })
 -- Buffer Remaps
 nnoremap('<leader>bd', ':bd<cr>')
 nnoremap('<leader>ba', ':%bd|e#|bd#<cr>')
-
-
 
 -- Diagnostic keymaps
 nnoremap('[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
