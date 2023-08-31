@@ -2,7 +2,16 @@ local setup = function()
   require('nvim-treesitter.configs').setup {
 
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'javascript', 'lua', 'luadoc', 'luap', 'markdown', 'markdown_inline', 'python', 'julia',
+    ensure_installed = {
+      'c',
+      'javascript',
+      'lua',
+      'luadoc',
+      'luap',
+      'markdown',
+      'markdown_inline',
+      'python',
+      'julia',
       'vim',
       'vimdoc' },
 
@@ -76,8 +85,8 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/playground'
   },
-  -- config = function()
-  --   pcall(require('nvim-treesitter.install').update { with_sync = true })
-  --   setup()
-  -- end,
+  config = function()
+    pcall(require('nvim-treesitter.install').update { with_sync = true })
+    setup()
+  end,
 }

@@ -1,4 +1,5 @@
 -- Colourschemes
+
 return {
   {
     'folke/tokyonight.nvim',
@@ -6,7 +7,7 @@ return {
     config = function()
       require("tokyonight").setup {
         style = "day",
-        day_brightness = 0.4
+        day_brightness = 0.3
       }
       -- vim.cmd.colorscheme('tokyonight')
     end,
@@ -17,28 +18,11 @@ return {
     config = function()
       require('kanagawa').setup {
         background = {
-          dark = "wave", -- or "dragon"
+          dark = "wave", -- "dragon" or "wave"
           light = "lotus"
         },
       }
-      -- vim.cmd.colorscheme('kanagawa')
-    end,
-  },
-  {
-    'sainnhe/gruvbox-material',
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_material_foreground = 'original'
-      vim.g.gruvbox_material_background = 'hard'
-      -- vim.cmd.colorscheme('gruvbox-material')
-    end,
-  },
-  {
-    'luisiacc/gruvbox-baby',
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_baby_telescope_theme = 1
-      -- vim.cmd.colorscheme('gruvbox-baby')
+      vim.cmd.colorscheme('kanagawa')
     end,
   },
   {
@@ -48,19 +32,8 @@ return {
       require('gruvbox').setup {
         contrast = 'hard',
       }
-      vim.cmd.colorscheme('gruvbox')
+      -- vim.cmd.colorscheme('gruvbox')
     end
-  },
-  {
-    'rose-pine/nvim',
-    name = 'rose-pine',
-    priority = 1000,
-    config = function()
-      require('rose-pine').setup {
-        variant = 'dawn', -- 'auto', 'main', 'moon', 'dawn'
-      }
-      -- vim.cmd.colorscheme('rose-pine')
-    end,
   },
   {
     'savq/melange-nvim',
@@ -74,15 +47,14 @@ return {
     priority = 1000,
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-      -- vim.cmd.colorscheme('zenbones')
+      -- vim.cmd.colorscheme('zenwritten')
     end,
   },
   {
-    'EdenEast/nightfox.nvim',
+    'ribru17/bamboo.nvim',
     priority = 1000,
     config = function()
-      require('nightfox').setup {}
-      -- vim.cmd.colorscheme('nightfox')
-    end
-  }
+      -- vim.cmd.colorscheme('bamboo')
+    end,
+  },
 }

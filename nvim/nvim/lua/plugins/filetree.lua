@@ -43,7 +43,7 @@ local setup = function()
         ["h"] = function(state)
           local node = state.tree:get_node()
           local is_root = node:get_id() == state.tree:get_nodes()[1]:get_id()
-          if is_root and not node:is_expanded() and state.commands.navigate_up ~= nil then
+          if is_root and not node:is_expanded() and state.commands.navigate_up then
             state.commands.navigate_up(state)
           elseif (node.type == "directory" or node:has_children()) and node:is_expanded() then
             state.commands.toggle_node(state)
@@ -145,7 +145,7 @@ local setup = function()
       { -- Close neo-tree after a file is opened
         event = "file_opened",
         handler = function()
-          require("neo-tree").close_all()
+          require("neo-tree.command").execute({ action = "close" })
         end
       },
     },
@@ -155,6 +155,7 @@ end
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  branch = "main",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",

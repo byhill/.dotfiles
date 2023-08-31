@@ -65,6 +65,12 @@ function flac_to_alac() {
     ffmpeg -i "$i" -y -v 0 -vcodec copy -acodec alac  "${i%.flac}".m4a && rm -f "$i"; 
   done
 }
+function wav_to_alac() {
+  for i in *.wav; do 
+    echo $i; 
+    ffmpeg -i "$i" -y -v 0 -vcodec copy -acodec alac  "${i%.wav}".m4a && rm -f "$i"; 
+  done
+}
 
 # Django
 alias djrs="python manage.py runserver"

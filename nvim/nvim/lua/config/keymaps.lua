@@ -50,5 +50,5 @@ nnoremap('<leader>ba', ':%bd|e#|bd#<cr>')
 -- Diagnostic keymaps
 nnoremap('[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 nnoremap(']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-nnoremap('<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-nnoremap('<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+nnoremap('<leader>df', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+nnoremap('<leader>dl', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
