@@ -33,6 +33,7 @@ local setup = function()
 
     nmap('<leader>rn', buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', buf.code_action, '[C]ode [A]ction')
+    -- nmap('K', vim.lsp.buf.hover)
     nmap('gd', buf.definition, '[G]oto [D]efinition')
     nmap('gD', buf.declaration, '[G]oto [D]eclaration')
     nmap('gr', telescope.lsp_references, '[G]oto [R]eferences')

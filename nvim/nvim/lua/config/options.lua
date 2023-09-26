@@ -54,5 +54,9 @@ set.updatetime = 2000
 set.timeout = true
 set.timeoutlen = 2000
 
+-- Make K work for manual
+set.keywordprg = ':help'
+
+
 -- Set completeopt to have a better completion experience
 set.completeopt = 'menu,menuone,noselect,preview'

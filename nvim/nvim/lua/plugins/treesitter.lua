@@ -1,3 +1,8 @@
+-- https://github.com/nvim-treesitter/nvim-treesitter
+-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+-- :help nvim-treesitter
+-- :help nvim-treesitter-textobjects
+
 local setup = function()
   require('nvim-treesitter.configs').setup {
 
@@ -13,7 +18,8 @@ local setup = function()
       'python',
       'julia',
       'vim',
-      'vimdoc' },
+      'vimdoc'
+    },
 
     highlight = {
       enable = true,
@@ -50,19 +56,19 @@ local setup = function()
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
           [']m'] = '@function.outer',
-          [']]'] = '@class.outer',
+          -- [']]'] = '@class.outer',
         },
         goto_next_end = {
           [']M'] = '@function.outer',
-          [']['] = '@class.outer',
+          -- [']['] = '@class.outer',
         },
         goto_previous_start = {
           ['[m'] = '@function.outer',
-          ['[['] = '@class.outer',
+          -- ['[['] = '@class.outer',
         },
         goto_previous_end = {
           ['[M'] = '@function.outer',
-          ['[]'] = '@class.outer',
+          -- ['[]'] = '@class.outer',
         },
       },
       swap = {
@@ -83,7 +89,6 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    'nvim-treesitter/playground'
   },
   config = function()
     pcall(require('nvim-treesitter.install').update { with_sync = true })

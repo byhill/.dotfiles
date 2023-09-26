@@ -68,6 +68,7 @@ return {
     s({ trig = "div=", snippetType = a }, t("÷=")),
     s({ trig = "<=", snippetType = a }, t("≤")),
     s({ trig = ">=", snippetType = a }, t("≥")),
+    s({ trig = "!=", snippetType = a }, t("≠")),
     s({ trig = "mu ", snippetType = a }, t("μ ")),
     s({ trig = "mu[", snippetType = a }, t("μ[")),
     s({ trig = "pe_setup", desc = "Boilerplate code for a project euler problem" }, fmt([[
