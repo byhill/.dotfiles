@@ -23,9 +23,10 @@ local setup = function()
 
     highlight = {
       enable = true,
+      additional_vim_regex_highlighting = true
     },
 
-    indent = { enable = false, disable = { 'python' } },
+    indent = { enable = false },
 
     incremental_selection = {
       enable = true,

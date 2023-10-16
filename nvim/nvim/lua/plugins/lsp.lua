@@ -29,7 +29,7 @@ local setup = function()
     local listworkspace = function() print(vim.inspect(buf.list_workspace_folders())) end
 
     -- This disables semantic highlighting.
-    client.server_capabilities.semanticTokensProvider = nil
+    -- client.server_capabilities.semanticTokensProvider = nil
 
     nmap('<leader>rn', buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', buf.code_action, '[C]ode [A]ction')
