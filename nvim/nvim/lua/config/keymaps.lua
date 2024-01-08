@@ -9,7 +9,7 @@ end
 nnoremap('<Space>', '<Nop>', { silent = true })
 vnoremap('<Space>', '<Nop>', { silent = true })
 
--- Remap for dealing with word wrap
+-- Remap for j and k with word wrap
 nnoremap('k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 nnoremap('j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
@@ -18,14 +18,14 @@ nnoremap('U', '<c-R>')
 nnoremap('<c-R>', 'U')
 
 -- <leader>v commands
-nnoremap('<leader>ve', ':edit $MYVIMRC<cr>', { silent = true })
-nnoremap('<leader>vw', ':echo @%<cr>')
-nnoremap('<leader>vh', ':cd %:h<cr>:pwd<cr>')
-nnoremap('<leader>vz', ':edit ~/.zshrc<cr>', { silent = true })
+nnoremap('<leader>ve', ':edit $MYVIMRC<cr>', { silent = true, desc = "[v]im [e]dit, i.e., edit vimrc" })
+nnoremap('<leader>vw', ':echo @%<cr>', { desc = "[v]im [w]here, i.e., print current directory" })
+nnoremap('<leader>vh', ':cd %:h<cr>:pwd<cr>', { desc = "[v]im [h]ere, i.e., change currrent directory to here" })
+nnoremap('<leader>vz', ':edit ~/.zshrc<cr>', { silent = true, desc = "[v]im [z]sh, i.e., edit zshrc" })
 -- nnoremap('<leader>vs', ':source %:p<cr>', { silent = true }) -- Lazy doesn't support this
 
 -- Fix indentation
-nnoremap('<leader>i', "gg=G''")
+nnoremap('<leader>i', "gg=G''", { desc = "[i]indentation, i.e., fix indentation" })
 
 -- Window Remaps
 -- ws, wa, wr, and wl are taken by lsp

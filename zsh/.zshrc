@@ -63,13 +63,31 @@ function brews() {
 function flac_to_alac() {
   for i in *.flac; do 
     echo $i; 
-    ffmpeg -i "$i" -y -v 0 -vcodec copy -acodec alac  "${i%.flac}".m4a && rm -f "$i"; 
+    ffmpeg -i "$i" -y -v 0 -c:v copy -acodec alac  "${i%.flac}".m4a && rm -f "$i"; 
   done
 }
 function wav_to_alac() {
   for i in *.wav; do 
     echo $i; 
-    ffmpeg -i "$i" -y -v 0 -vcodec copy -acodec alac  "${i%.wav}".m4a && rm -f "$i"; 
+    ffmpeg -i "$i" -y -v 0 -c:v copy -acodec alac  "${i%.wav}".m4a # && rm -f "$i"; 
+  done
+}
+function alac_to_flac() {
+  for i in *.m4a; do 
+    echo $i; 
+    ffmpeg -i "$i" -y -v 0 -c:v copy -acodec flac  "${i%.m4a}".flac # && rm -f "$i"; 
+  done
+}
+function flac_to_mp3() {
+  for i in *.flac; do
+    echo $i;
+    ffmpeg -i "$i" -y -c:v copy -ab 320k "${i%.flac}".mp3 && rm -f "$i";
+  done
+}
+function alac_to_mp3() {
+  for i in *.m4a; do 
+    echo $i; 
+    ffmpeg -i "$i" -y -v 0 -c:v copy -ab 320k  "${i%.m4a}".mp3 && rm -f "$i"; 
   done
 }
 
@@ -85,3 +103,5 @@ alias luamake=/Users/bryanhill/lua-language-server/3rd/luamake/luamake
 
 # LaTeX
 alias tlmgr="sudo tlmgr"
+ 
+# sudo pmset -a disablesleep 1
