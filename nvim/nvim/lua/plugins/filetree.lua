@@ -97,10 +97,15 @@ local setup = function()
         hide_hidden = true, -- only works on Windows for hidden files/directories
         hide_by_name = {
           "lazy-lock.json",
+          "__pycache__",
         },
         hide_by_pattern = {},
         always_show = { -- remains visible even if other settings would normally hide it
           ".gitignore",
+          ".dockerignore",
+          ".env",
+          ".env.example",
+          ".env.production",
         },
         never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
           ".DS_Store",
