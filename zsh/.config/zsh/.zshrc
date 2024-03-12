@@ -10,7 +10,7 @@ fi
 export ZSHZ_DATA="$HOME/.config/zsh/z/.z"
 
 # Oh-My-Zsh
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.config/zsh/oh-my-zsh"
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 30
 ZSH_THEME="powerlevel10k/powerlevel10k"
