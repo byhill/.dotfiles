@@ -5,9 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# z - https://github.com/agkozak/zsh-z
+export ZSHZ_DATA="$HOME/.config/zsh/z/.z"
+
 # Oh-My-Zsh
 export ZSH="$HOME/.oh-my-zsh"
-export ZSHZ_DATA="$HOME/.config/zsh/z/.z"
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 30
 ZSH_THEME="powerlevel10k/powerlevel10k"
