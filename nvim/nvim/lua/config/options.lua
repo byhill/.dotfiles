@@ -3,12 +3,10 @@ local set = vim.opt
 
 -- Tabs and indentation
 set.expandtab = true
-set.tabstop = 4
 set.shiftwidth = 4
 set.softtabstop = 4
 set.shiftround = true
 set.autoindent = true
-set.smartindent = true
 
 -- Colourscheme
 set.termguicolors = true
@@ -56,7 +54,6 @@ set.timeoutlen = 2000
 
 -- Make K work for manual
 set.keywordprg = ':help'
-
 
 -- Set completeopt to have a better completion experience
 set.completeopt = 'menu,menuone,noselect,preview'
