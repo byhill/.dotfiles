@@ -6,15 +6,13 @@ Second, make sure you have `julia` installed and have entered the Julia REPL at 
 (so the `.julia/` directory is created).
 Then, in the `.dotfiles` directoy, do the following.
 ```
-stow -vSt ~ git
-stow -vSt ~ zsh
-stow -vSt ~/.julia julia
-stow -vSt ~/.config helix
-```
+mkdir .julia
+mkdir ~/.config/nvim
+mkdir ~/.config/zsh
 
-## Neovim
-First ensure that the directory `~/.config/nvim/` exists.
-Then `cd` into this directory, and in your terminal, enter
-```
-stow -vSt ~/.config/ nvim
+stow -vSt ~ git
+stow -vSt ~/.config helix
+stow -vSt ~/.julia julia
+stow -vSt ~/.config/nvim nvim
+stow -vSt ~ zsh
 ```
