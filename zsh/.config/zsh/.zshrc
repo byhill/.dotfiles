@@ -1,16 +1,19 @@
-# Powerlevel10k Theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-P10K="$HOME/.config/zsh/p10k/p10k.zsh"
+##############################################################################
+### Powerlevel10k Theme
+### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+##############################################################################
+P10K="$ZDOTDIR/p10k/p10k.zsh"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 [[ ! -f "$P10K" ]] || source $P10K
 
-# z - https://github.com/agkozak/zsh-z
-export ZSHZ_DATA="$HOME/.config/zsh/z/.z"
+# Z - https://github.com/agkozak/zsh-z
+export ZSHZ_DATA="$ZDOTDIR/z/.z"
 
 # Oh-My-Zsh
-export ZSH="$HOME/.config/zsh/oh-my-zsh"
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#main-settings
+export ZSH="$ZDOTDIR/oh-my-zsh"
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 30
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -21,14 +24,18 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git z)
 source $ZSH/oh-my-zsh.sh
 
-# Pyenv
+##############################################################################
+### Pyenv
+### https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv
+### https://github.com/pyenv/pyenv-virtualenv?tab=readme-ov-file#installing-with-homebrew-for-macos-users
+### https://github.com/pyenv/pyenv?tab=readme-ov-file#homebrew-in-macos
+##############################################################################
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
+command -v pyenv-virtualenv >/dev/null && eval "$(pyenv virtualenv-init -)"
+command -v pyenv >/dev/null && alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 function nvimvenv {
   if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
     source "$VIRTUAL_ENV/bin/activate"
@@ -45,7 +52,7 @@ export LANG=en_CA.UTF-8
 export EDITOR='nvim'
 
 # Custom aliases
-alias zshrc="$EDITOR ~/.zshrc"
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 
 # Homebrew aliases
 alias brewo="brew update && brew outdated --greedy"
@@ -114,8 +121,6 @@ alias djm="python manage.py migrate"
 function djsass() {
     sass --watch $1/static/sass:$1/static/css
 }
-
-alias luamake=/Users/bryanhill/lua-language-server/3rd/luamake/luamake
 
 # LaTeX
 alias tlmgr="sudo tlmgr"

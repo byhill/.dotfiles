@@ -1,2 +1,2 @@
-ZDOTDIR=~/.config/zsh
+ZDOTDIR=$HOME/.config/zsh
 export LESSHISTFILE=-
