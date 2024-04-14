@@ -55,8 +55,8 @@ export EDITOR='nvim'
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 
 # Homebrew aliases
-alias brewo="brew update && brew outdated --greedy"
-alias brewu="brew upgrade --greedy && brew cleanup"
+alias brewo="brew update && brew outdated"
+alias brewu="brew upgrade && brew cleanup"
 function brews() {
   local formulae="$(brew leaves | xargs brew deps --installed --for-each)"
   local casks="$(brew list --cask)"
@@ -98,13 +98,13 @@ function alac_to_flac() {
 function flac_to_mp3() {
   for i in *.flac; do
     echo $i;
-    ffmpeg -i "$i" -y -v 0 -c:v copy -ab 320k "${i%.flac}".mp3 && rm -f "$i";
+    ffmpeg -i "$i" -y -v 0 -c:v copy -b:a 320k "${i%.flac}".mp3 && rm -f "$i";
   done
 }
 function alac_to_mp3() {
   for i in *.m4a; do
     echo $i;
-    ffmpeg -i "$i" -y -v 0 -c:v copy -ab 320k "${i%.m4a}".mp3 && rm -f "$i";
+    ffmpeg -i "$i" -y -v 0 -c:v copy -b:a 320k "${i%.m4a}".mp3 && rm -f "$i";
   done
 }
 function wav_to_mp3() {
