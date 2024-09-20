@@ -11,6 +11,6 @@ local setup = function()
 end
 
 return {
-  'dense-analysis/ale',
-  config = setup
+  --   'dense-analysis/ale',
+  --   config = setup
 }

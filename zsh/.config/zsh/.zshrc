@@ -47,6 +47,8 @@ function nvimvenv {
 }
 alias nvim=nvimvenv
 
+##############################################################################
+
 # Set environment variables
 export LANG=en_CA.UTF-8
 export EDITOR='nvim'
@@ -69,6 +71,8 @@ function brews() {
   echo "${formulae}" | sed "s/^\(.*\):\(.*\)$/\1${blue}\2${off}/"
   echo "\n${blue}==>${off} ${bold}Casks${off}\n${casks}"
 }
+
+export PATH="/usr/local/sbin:$PATH"
 
 # Audio
 function flac_to_alac() {

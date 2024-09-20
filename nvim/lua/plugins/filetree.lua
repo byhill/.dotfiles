@@ -73,11 +73,11 @@ local setup = function()
         ["z"] = "close_all_nodes",
         ["Z"] = "expand_all_nodes",
         ["a"] = { "add", config = { show_path = "relative" } }, -- "none", "relative", "absolute"
-        ["A"] = "add_directory",                                -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+        ["K"] = "add_directory",                                -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
         ["d"] = "delete",
         ["r"] = "rename",
         ["y"] = "copy_to_clipboard",
-        ["x"] = "cut_to_clipboard",
+        ["X"] = "cut_to_clipboard",
         ["p"] = "paste_from_clipboard",
         ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
         ["m"] = "move",

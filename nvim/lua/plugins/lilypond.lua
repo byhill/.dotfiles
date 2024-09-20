@@ -4,7 +4,14 @@ return {
   config = function()
     if vim.fn.has('macunix') then
       require('nvls').setup({
-        -- edit config here (see "Customize default settings" in wiki)
+        options = {
+          pitches_language = "nohl",
+        },
+        lilypond = {
+          options = {
+            pdf_viewer = nil,
+          },
+        },
       })
     end
   end
