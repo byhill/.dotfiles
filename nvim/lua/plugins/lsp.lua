@@ -73,7 +73,6 @@ return {
   config = function() setup() end,
   dependencies = {
     { 'j-hui/fidget.nvim', config = true, tag = "legacy", event = "LspAttach" },
-    { 'folke/neodev.nvim', config = true },
     {
       'williamboman/mason-lspconfig.nvim',
       opts = { ensure_installed = vim.tbl_keys(servers) },
