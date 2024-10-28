@@ -72,7 +72,8 @@ local setup = function()
     sources = {
       { name = 'path' },
       { name = 'cmdline' }
-    }
+    },
+    matching = { disallow_symbol_nonprefix_matching = false },
   })
 end
 

@@ -15,8 +15,8 @@ end
 
 
 return {
-  {
-    'lervag/vimtex',
-    config = setup,
-  },
+  -- {
+  --   'lervag/vimtex',
+  --   config = setup,
+  -- },
 }

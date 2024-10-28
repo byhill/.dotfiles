@@ -1,3 +1,5 @@
+--- https://github.com/nvim-telescope/telescope.nvim
+
 local setup = function()
   local telescope = require('telescope')
   local builtin = require('telescope.builtin')
