@@ -2,6 +2,11 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 -- :help nvim-treesitter
 -- :help nvim-treesitter-textobjects
+--
+-- Treesitter playground is now included in base nvim.
+-- :Inspect
+-- :InspectTree
+-- :EditQuery
 
 local setup = function()
   require('nvim-treesitter.configs').setup {
@@ -10,13 +15,14 @@ local setup = function()
     ensure_installed = {
       'c',
       'javascript',
+      'julia',
       'lua',
       'luadoc',
       'luap',
       'markdown',
       'markdown_inline',
       'python',
-      'julia',
+      'rust',
       'vim',
       'vimdoc'
     },
@@ -33,17 +39,19 @@ local setup = function()
       keymaps = {
         init_selection = '<c-n>',
         node_incremental = '<c-n>',
-        scope_incremental = '<c-s>',
         node_decremental = '<c-m>',
+        scope_incremental = '<c-s>',
       },
     },
 
+    -- There are lots of other text-objects available.
+    -- See https://github.com/nvim-treesitter/nvim-treesitter-textobjects?tab=readme-ov-file#built-in-textobjects
     textobjects = {
+
       select = {
         enable = true,
-        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true,
         keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
           ['aa'] = '@parameter.outer',
           ['ia'] = '@parameter.inner',
           ['af'] = '@function.outer',
@@ -52,26 +60,11 @@ local setup = function()
           ['ic'] = '@class.inner',
         },
       },
+
       move = {
-        enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
-        goto_next_start = {
-          [']m'] = '@function.outer',
-          -- [']]'] = '@class.outer',
-        },
-        goto_next_end = {
-          [']M'] = '@function.outer',
-          -- [']['] = '@class.outer',
-        },
-        goto_previous_start = {
-          ['[m'] = '@function.outer',
-          -- ['[['] = '@class.outer',
-        },
-        goto_previous_end = {
-          ['[M'] = '@function.outer',
-          -- ['[]'] = '@class.outer',
-        },
+        enable = false,
       },
+
       swap = {
         enable = true,
         swap_next = {
@@ -81,6 +74,7 @@ local setup = function()
           ['<leader>A'] = '@parameter.inner',
         },
       },
+
     },
   }
 end

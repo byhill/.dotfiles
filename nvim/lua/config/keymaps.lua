@@ -44,8 +44,9 @@ nnoremap('<leader>wK', '<c-W>K')
 nnoremap('<leader>wm', ':MaximizerToggle<cr>', { silent = true })
 
 -- Buffer Remaps
-nnoremap('<leader>bd', ':bd<cr>')
-nnoremap('<leader>ba', ':%bd|e#|bd#<cr>')
+nnoremap('<leader>bd', ':bd<cr>', { desc = "[b]uffer [d]elete, i.e., delete current buffer" })
+nnoremap('<leader>ba', ':%bd|e#|bd#<cr>',
+  { desc = "[b]uffer delete [a]ll, i.e., delete all buffers but the current one" })
 
 -- Diagnostic keymaps
 nnoremap('[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
