@@ -6,12 +6,15 @@ local setup = function()
 
   telescope.setup {
     extensions = {
+
+      -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
       fzf = {
-        fuzzy = true,                   -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,    -- override the file sorter
-        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
       },
+
     },
   }
 
@@ -24,20 +27,21 @@ local setup = function()
   end
 
   -- LSP telescope mappings are defined elsewhere
-  nmap('<leader>s', builtin.find_files)
-  nmap('<leader>rg', builtin.live_grep)
-  nmap('<leader>g', builtin.grep_string)
-  nmap('<leader>tm', builtin.man_pages)
-  nmap('<leader>th', builtin.help_tags) -- search nvim help
-  nmap('<leader>tp', builtin.builtin)   -- search all pickers
-  nmap('<leader>t"', builtin.registers)
-  nmap('<leader>tc', builtin.colorscheme)
-  nmap('<leader>t/', function()
-    builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-      winblend = 10,
-      previewer = false,
-    })
-  end)
+  nmap('<leader>s', builtin.find_files, { desc = "[s]earch files" })
+  nmap('<leader>rg', builtin.live_grep, { desc = "[r]ip [g]rep" })
+  nmap('<leader>g', builtin.grep_string, { desc = "[g]rep string" })
+  nmap('<leader>tm', builtin.man_pages, { desc = "[t]elescope [m]an pages" })
+  nmap('<leader>th', builtin.help_tags, { desc = "[t]elescope vim [h]elp" })
+  nmap('<leader>tp', builtin.builtin, { desc = "[t]elescope [p]ickers" })
+  nmap('<leader>t"', builtin.registers, { desc = "[t]elescope [\"] registers" })
+  nmap('<leader>tc', builtin.colorscheme, { desc = "[t]elescope [c]olorschemes" })
+  nmap('<leader>t/', builtin.current_buffer_fuzzy_find, { desc = "[t]elescope [/] (search buffer)" })
+  -- nmap('<leader>t/', function()
+  --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  --     winblend = 10,
+  --     previewer = false,
+  --   })
+  -- end)
 end
 
 
@@ -52,5 +56,5 @@ return {
       cond = vim.fn.executable 'make' == 1
     },
   },
-  config = function() setup() end,
+  config = setup,
 }

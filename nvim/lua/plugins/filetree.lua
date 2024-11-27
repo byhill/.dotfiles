@@ -4,24 +4,12 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/main/lua/neo-tree/defaults.lua
 
 local setup = function()
-  vim.keymap.set('n', '<leader>f', ':Neotree toggle<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', { silent = true })
   vim.keymap.set('n', '<leader>.', ':Neotree position=current toggle<cr>', { silent = true })
-
-  -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-  vim.fn.sign_define("DiagnosticSignError",
-    { text = " ", texthl = "DiagnosticSignError" })
-  vim.fn.sign_define("DiagnosticSignWarn",
-    { text = " ", texthl = "DiagnosticSignWarn" })
-  vim.fn.sign_define("DiagnosticSignInfo",
-    { text = " ", texthl = "DiagnosticSignInfo" })
-  vim.fn.sign_define("DiagnosticSignHint",
-    { text = "", texthl = "DiagnosticSignHint" })
 
   require("neo-tree").setup({
     use_default_mappings = false,
     close_if_last_window = true,
-    popup_border_style = "rounded",
-    enable_git_status = true,
     enable_diagnostics = true,
 
     sources = {
@@ -39,7 +27,10 @@ local setup = function()
         nowait = true,
       },
       mappings = {
+        ["?"] = "show_help",
+        ["q"] = "close_window",
         ["<esc>"] = "close_window",
+        ["P"] = { "toggle_preview", config = { use_float = false } },
         ["h"] = function(state)
           local node = state.tree:get_node()
           local is_root = node:get_id() == state.tree:get_nodes()[1]:get_id()
@@ -58,35 +49,35 @@ local setup = function()
             if not node:is_expanded() then
               state.commands.toggle_node(state)
             else
-              require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+              require("neo-tree.ui.renderer").focus_node(state,
+                node:get_child_ids()[1])
             end
           else
             require("neo-tree.sources.filesystem.commands").open(state)
           end
         end,
-        ["P"] = { "toggle_preview", config = { use_float = false } },
-        -- ["w"] = "open_with_window_picker",
-        ["S"] = "open_split",  -- ["S"] = "split_with_window_picker",
-        ["s"] = "open_vsplit", -- ["s"] = "vsplit_with_window_picker",
-        ["t"] = "open_tabnew", -- ["t"] = "open_tab_drop", -- :help drop
-        ['C'] = 'close_all_subnodes',
-        ["z"] = "close_all_nodes",
+        ["w"] = "open_with_window_picker",
+        ["S"] = "split_with_window_picker",  -- ["S"] = "open_split"
+        ["s"] = "vsplit_with_window_picker", -- ["s"] = "open_vsplit"
+        ["t"] = "open_tabnew",
+        ['c'] = 'close_all_subnodes',
+        ["C"] = "close_all_nodes", -- ["z"] = "close_all_nodes  -- bugged, doesn't obey `nowait`.
         ["Z"] = "expand_all_nodes",
-        ["a"] = { "add", config = { show_path = "relative" } }, -- "none", "relative", "absolute"
-        ["K"] = "add_directory",                                -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+        ["a"] = {
+          "add",
+          config = { show_path = "relative" } -- "none", "relative", "absolute"
+        },
+        ["n"] = "add_directory",
         ["d"] = "delete",
         ["r"] = "rename",
         ["y"] = "copy_to_clipboard",
-        ["X"] = "cut_to_clipboard",
+        ["x"] = "cut_to_clipboard",
         ["p"] = "paste_from_clipboard",
-        ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
         ["m"] = "move",
-        ["q"] = "close_window",
         ["R"] = "refresh",
-        ["i"] = "show_file_details",
+        ["i"] = { "show_file_details", nowait = true },
         ["<"] = "prev_source",
         [">"] = "next_source",
-        ["?"] = "show_help",
       }
     },
 
@@ -158,6 +149,21 @@ local setup = function()
 end
 
 
+-- https://github.com/s1n7ax/nvim-window-picker
+
+local window_picker_opts = {
+  hint = 'floating-big-letter',
+  filter_rules = {
+    include_current_win = false,
+    autoselect_one = true,
+    bo = {
+      filetype = { 'neo-tree', "neo-tree-popup", "notify" },
+      buftype = { 'terminal', "quickfix" },
+    },
+  },
+}
+
+
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "main",
@@ -165,6 +171,10 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
+    {
+      's1n7ax/nvim-window-picker',
+      opts = window_picker_opts,
+    },
   },
-  config = function() setup() end,
+  config = setup,
 }

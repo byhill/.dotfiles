@@ -46,26 +46,37 @@ local setup = function()
       documentation = cmp.config.window.bordered(),
     },
 
-    mapping = {
-      ['<CR>'] = m(cmp.mapping.confirm({ select = false }), { "i", "c" }),
-      ['<S-Space>'] = m(picknext, { "i", "c", "s" }),
-      ['<C-Space>'] = m(pickprev, { "i", "c", "s" }),
-      ['<C-d>'] = m(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-      ['<C-f>'] = m(cmp.mapping.scroll_docs(4), { "i", "c" }),
-      ['<C-e>'] = m(cmp.mapping.abort(), { "i", "c" }),
-    },
-
-    sources = {
+    sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'buffer' },
-    }
+    }, {
+      { name = 'calc' },
+    }),
+
+    matching = {
+      disallow_partial_fuzzy_matching = false,
+      disallow_symbol_nonprefix_matching = false,
+    },
+
+    mapping = {
+      ['<CR>'] = m(m.confirm({ select = false }), { "i", "c" }),
+      ['<S-Space>'] = m(picknext, { "i", "c", "s" }),
+      ['<C-Space>'] = m(pickprev, { "i", "c", "s" }),
+      ['<C-d>'] = m(m.scroll_docs(-4), { "i", "c" }),
+      ['<C-f>'] = m(m.scroll_docs(4), { "i", "c" }),
+      ['<C-e>'] = m(m.abort(), { "i", "c" }),
+    },
+
   })
 
   cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' }
-    }
+    },
+    view = {
+      entries = { name = 'wildmenu', separator = ' | ' }
+    },
   })
 
   cmp.setup.cmdline(':', {
@@ -73,7 +84,10 @@ local setup = function()
       { name = 'path' },
       { name = 'cmdline' }
     },
-    matching = { disallow_symbol_nonprefix_matching = false },
+    matching = {
+      disallow_partial_fuzzy_matching = false,
+      disallow_symbol_nonprefix_matching = false,
+    },
   })
 end
 
@@ -85,7 +99,8 @@ return {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline'
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-calc',
   },
   config = setup
 }

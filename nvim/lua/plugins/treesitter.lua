@@ -29,7 +29,7 @@ local setup = function()
 
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = true
+      additional_vim_regex_highlighting = true,
     },
 
     indent = { enable = false },
@@ -50,7 +50,7 @@ local setup = function()
 
       select = {
         enable = true,
-        lookahead = true,
+        lookahead = false,
         keymaps = {
           ['aa'] = '@parameter.outer',
           ['ia'] = '@parameter.inner',

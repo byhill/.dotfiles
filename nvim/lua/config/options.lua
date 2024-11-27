@@ -2,9 +2,10 @@
 local set = vim.opt
 
 -- Tabs and indentation
+-- vim-sleuth will often change these settings automatically
 set.expandtab = true
 set.shiftwidth = 4
-set.softtabstop = 4
+set.softtabstop = -1 -- same value as shiftwidth
 set.shiftround = true
 set.autoindent = true
 
@@ -57,3 +58,7 @@ set.keywordprg = ':help'
 
 -- Set completeopt to have a better completion experience
 set.completeopt = 'menu,menuone,noselect,preview'
+
+-- Save buffer when quitting, changing focus to a different buffer, etc...
+-- Test
+set.confirm = true
