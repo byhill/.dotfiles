@@ -4,39 +4,21 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/main/lua/neo-tree/defaults.lua
 
 local setup = function()
-  vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', {
-    desc = "[e]xplorer toggle (cwd)",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>E', ':Neotree position=current toggle<cr>', {
-    desc = "[E]xplorer toggle (current window)",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>be', ':Neotree source=buffers toggle<cr>', {
-    desc = "[b]uffer [e]xplorer",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>bE', ':Neotree source=buffers position=current toggle<cr>', {
-    desc = "[b]uffer [E]xplorer (current window)",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>ge', ':Neotree source=git_status toggle<cr>', {
-    desc = "[g]it [e]xplorer",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>gE', ':Neotree source=git_status position=current toggle<cr>', {
-    desc = "[g]it [E]xplorer (current window)",
-    silent = true,
-  })
+  vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+  vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+  vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+  vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
   require("neo-tree").setup({
     use_default_mappings = false,
     close_if_last_window = true,
+    popup_border_style = "rounded",
+    enable_git_status = true,
     enable_diagnostics = true,
 
     sources = {
       "filesystem",
-      "buffers",
+      -- "buffers",
       "git_status",
       -- "document_symbols",
     },
@@ -49,10 +31,7 @@ local setup = function()
         nowait = true,
       },
       mappings = {
-        ["?"] = "show_help",
-        ["q"] = "close_window",
         ["<esc>"] = "close_window",
-        ["P"] = { "toggle_preview", config = { use_float = false } },
         ["h"] = function(state)
           local node = state.tree:get_node()
           local is_root = node:get_id() == state.tree:get_nodes()[1]:get_id()
@@ -71,36 +50,36 @@ local setup = function()
             if not node:is_expanded() then
               state.commands.toggle_node(state)
             else
-              require("neo-tree.ui.renderer").focus_node(state,
-                node:get_child_ids()[1])
+              require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
             end
           else
             require("neo-tree.sources.filesystem.commands").open(state)
           end
         end,
-        ["w"] = "open_with_window_picker",
-        ["S"] = "split_with_window_picker",  -- ["S"] = "open_split"
-        ["s"] = "vsplit_with_window_picker", -- ["s"] = "open_vsplit"
-        ["t"] = "open_tabnew",
-        ['c'] = 'close_all_subnodes',
-        ["z"] = "close_all_nodes", -- ["z"] = "close_all_nodes  -- bugged, doesn't obey `nowait`.
+        ["P"] = { "toggle_preview", config = { use_float = false } },
+        -- ["w"] = "open_with_window_picker",
+        ["S"] = "open_split", -- ["S"] = "split_with_window_picker",
+        ["s"] = "open_vsplit", -- ["s"] = "vsplit_with_window_picker",
+        ["t"] = "open_tabnew", -- ["t"] = "open_tab_drop", -- :help drop
+        ["C"] = "close_all_subnodes",
+        ["z"] = "close_all_nodes",
         ["Z"] = "expand_all_nodes",
-        ["a"] = {
-          "add",
-          config = { show_path = "relative" } -- "none", "relative", "absolute"
-        },
-        ["n"] = "add_directory",
-        ["d"] = "delete",
+        ["a"] = { "add", config = { show_path = "relative" } }, -- "none", "relative", "absolute"
+        ["K"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+        ["D"] = "delete",
         ["r"] = "rename",
         ["y"] = "copy_to_clipboard",
         ["x"] = "cut_to_clipboard",
         ["p"] = "paste_from_clipboard",
+        ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
         ["m"] = "move",
+        ["q"] = "close_window",
         ["R"] = "refresh",
-        ["i"] = { "show_file_details", nowait = true },
+        ["i"] = "show_file_details",
         ["<"] = "prev_source",
         [">"] = "next_source",
-      }
+        ["?"] = "show_help",
+      },
     },
 
     filesystem = {
@@ -142,21 +121,21 @@ local setup = function()
           ["<up>"] = "move_cursor_up",
           ["<C-p>"] = "move_cursor_up",
         },
-      }
+      },
     },
 
     git_status = {
       window = {
         mappings = {
-          ["A"]  = "git_add_all",
+          ["A"] = "git_add_all",
           ["gu"] = "git_unstage_file",
           ["ga"] = "git_add_file",
           ["gr"] = "git_revert_file",
           ["gc"] = "git_commit",
           ["gp"] = "git_push",
           ["gg"] = "git_commit_and_push",
-        }
-      }
+        },
+      },
     },
 
     event_handlers = {
@@ -164,39 +143,21 @@ local setup = function()
         event = "file_opened",
         handler = function()
           require("neo-tree.command").execute({ action = "close" })
-        end
+        end,
       },
     },
   })
 end
 
-
--- https://github.com/s1n7ax/nvim-window-picker
-
-local window_picker_opts = {
-  hint = 'floating-big-letter',
-  filter_rules = {
-    include_current_win = false,
-    autoselect_one = true,
-    bo = {
-      filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-      buftype = { 'terminal', "quickfix" },
-    },
-  },
-}
-
-
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "main",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
-    {
-      's1n7ax/nvim-window-picker',
-      opts = window_picker_opts,
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "main",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
+    -- config = setup,
   },
-  config = setup,
 }

@@ -89,4 +89,5 @@ return {
     pcall(require('nvim-treesitter.install').update { with_sync = true })
     setup()
   end,
+  cond = true,
 }

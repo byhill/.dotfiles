@@ -47,6 +47,7 @@ function nvimvenv {
 }
 alias nvim=nvimvenv
 
+
 ##############################################################################
 
 # Set environment variables
@@ -72,15 +73,16 @@ function brews() {
   echo "\n${blue}==>${off} ${bold}Casks${off}\n${casks}"
 }
 
-export PATH="/usr/local/sbin:$PATH"
+# ffmpeg
+alias ffmpeg="ffmpeg7"
 
 # Audio
-function flac_to_alac() {
-  for i in *.flac; do
-    echo $i;
-    ffmpeg -i "$i" -y -v 0 -c:v copy -acodec alac "${i%.flac}".m4a && rm -f "$i";
-  done
-}
+# function flac_to_alac() {
+#   for i in **/*.flac; do
+#     echo $i;
+#     ffmpeg -i "$i" -y -v 0 -c:v copy -acodec alac "${i%.flac}".m4a && rm -f "$i";
+#   done
+# }
 function wav_to_alac() {
   for i in *.wav; do
     echo $i;
@@ -117,6 +119,52 @@ function wav_to_mp3() {
     ffmpeg -i "$i" -y -v 0 -c:v copy -ab 320k "${i%.wav}".mp3 && rm -f "$i";
   done
 }
+function alac_to_wav() {
+  for i in *.m4a; do
+    echo $i;
+    ffmpeg -i "$i" -v 0 "${i%.m4a}".wav && rm -f "$i";
+  done
+}
+function flac_to_aac() {
+  for i in **/*.flac; do
+    echo $i;
+    flac -d -f -s -o tmp.wav "$i" \
+    && afconvert tmp.wav tmp.caf -d 0 -f caff --soundcheck-generate \
+    && afconvert tmp.caf -d aac -f m4af -u pgcm 2 --soundcheck-read -b 192000 -q 127 -s 2 "${i%.flac}".m4a \
+    && rm "$i";
+  done
+  rm -f tmp.wav;
+  rm -f tmp.caf;
+}
+function flac_to_alac() {
+  for i in **/*.flac; do
+    echo $i;
+    flac -d -f -s -o tmp.wav "$i" \
+    && afconvert tmp.wav -d alac -f m4af "${i%.flac}".m4a \
+    && rm "$i";
+  done
+  rm -f tmp.wav;
+}
+function m4a_to_flac() {
+  for i in **/*.m4a; do
+    echo $i;
+    ffmpeg -i "$i" -v 0 -acodec flac "${i%.m4a}".flac \
+    && flac --best --verify --silent --force "${i%.m4a}".flac \
+    && rm "$i";
+  done
+}
+
+function flac_list_meta() {
+  for i in **/*.flac; do
+    metaflac --list --except-block-type=PICTURE "$i";
+  done
+}
+function flac_remove_padding() {
+  for i in **/*.flac; do
+    echo $i;
+    metaflac --dont-use-padding --remove --block-type=PADDING "$i";
+  done
+}
 
 # Django
 alias djrs="python manage.py runserver"
@@ -128,5 +176,30 @@ function djsass() {
 
 # LaTeX
 alias tlmgr="sudo tlmgr"
+
+# ImageMagick
+export PATH="/opt/local/lib/ImageMagick7/bin:$PATH"
+
+
+
+
+##############################################################################
+### Julia
+##############################################################################
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/byhill/.julia/juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
+
+##############################################################################
+### POSTGRESQL
+##############################################################################
+export PATH="/Library/PostgreSQL/17/bin:$PATH"
+##############################################################################
 
 # sudo pmset -a disablesleep 1

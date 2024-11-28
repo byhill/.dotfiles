@@ -13,6 +13,13 @@ autocmd('TextYankPost', {
 })
 
 
+autocmd('Filetype', {
+  desc = 'Open help tin a vertical split to the left',
+  pattern = { 'help' },
+  command = "wincmd L",
+})
+
+
 -- Close buffers of certain filetypes when <q> is pressed
 -- From https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 autocmd("FileType", {

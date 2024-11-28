@@ -1,19 +1,25 @@
+local which_key_opts = {
+  preset = "modern",
+  delay = function(ctx)
+    return ctx.plugin and 0 or 1000
+  end,
+}
+
+
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    -- test
-  },
+  opts = which_key_opts,
   keys = {
     {
       "<leader>?",
-      function()
-        require("which-key").show({ global = false })
-      end,
+      function() require("which-key").show({ global = false }) end,
       desc = "Buffer Local Keymaps (which-key)",
     },
   },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "echasnovski/mini.icons",
+  },
+  cond = true,
 }
