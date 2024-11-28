@@ -9,8 +9,6 @@ end
 nnoremap('<Space>', '<Nop>', { silent = true })
 vnoremap('<Space>', '<Nop>', { silent = true })
 
-nnoremap('z', 'j')
-
 -- Remap for j and k with word wrap
 nnoremap('k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 nnoremap('j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

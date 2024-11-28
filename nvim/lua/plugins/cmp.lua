@@ -1,6 +1,8 @@
 -- Main plugin: https://github.com/hrsh7th/nvim-cmp
 -- List of sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 
+
+
 local setup = function()
   local luasnip = require('luasnip')
   local cmp = require('cmp')
@@ -12,6 +14,7 @@ local setup = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
+
 
   local picknext = function(fallback)
     if cmp.visible() then
@@ -25,6 +28,7 @@ local setup = function()
     end
   end
 
+
   local pickprev = function(fallback)
     if cmp.visible() then
       cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
@@ -34,6 +38,7 @@ local setup = function()
       fallback()
     end
   end
+
 
 
   cmp.setup({
@@ -50,8 +55,6 @@ local setup = function()
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'buffer' },
-    }, {
-      { name = 'calc' },
     }),
 
     matching = {
