@@ -62,3 +62,12 @@ set.completeopt = 'menu,menuone,noselect,preview'
 -- Save buffer when quitting, changing focus to a different buffer, etc...
 -- Test
 set.confirm = true
+
+-- :help vim.diagnostic.Opts
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})

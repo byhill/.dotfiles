@@ -8,6 +8,10 @@
 -- :InspectTree
 -- :EditQuery
 
+
+local setup = function(_, opts) require("nvim-treesitter.configs").setup(opts) end
+
+
 local opts = {
 
   ensure_installed = {
@@ -22,7 +26,7 @@ local opts = {
     'python',
     'rust',
     'vim',
-    'vimdoc'
+    'vimdoc',
   },
 
   highlight = {
@@ -48,7 +52,7 @@ local opts = {
 
     select = {
       enable = true,
-      lookahead = false,
+      lookahead = true,
       keymaps = {
         ['aa'] = '@parameter.outer',
         ['ia'] = '@parameter.inner',
@@ -84,4 +88,5 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   opts = opts,
+  config = setup,
 }

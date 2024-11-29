@@ -31,7 +31,7 @@ require('config')
 -----------------------------------------------------------
 require('lazy').setup('plugins', {
   change_detection = {
-    enabled = true,
+    enabled = false,
   },
   install = {
     colorscheme = { "melange" },
