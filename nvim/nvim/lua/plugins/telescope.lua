@@ -20,7 +20,7 @@ local setup = function()
 
   -- Enable telescope fzf native, if installed
   -- [Important] Call after setup function
-  pcall(telescope.load_extension, 'fzf')
+  pcall(telescope.load_extension, "fzf")
 
   local nmap = function(input, output, options)
     vim.keymap.set('n', input, output, options)

@@ -14,7 +14,7 @@ autocmd('TextYankPost', {
 
 
 autocmd('Filetype', {
-  desc = 'Open help tin a vertical split to the left',
+  desc = 'Open help in a vertical split to the left',
   pattern = { 'help' },
   command = "wincmd L",
 })

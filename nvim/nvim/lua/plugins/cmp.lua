@@ -1,4 +1,4 @@
--- Main plugin: https://github.com/hrsh7th/nvim-cmp
+-- Main plugin: https://github.com/hrsh7th/nvim-cmpcmp
 -- List of sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 
 

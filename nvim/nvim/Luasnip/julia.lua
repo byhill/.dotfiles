@@ -126,7 +126,7 @@ return {
         end  # module Problem{}
         using .Problem{}
         export problem{}
-      ]], { i(1), rep(1), rep(1), rep(1), rep(1), i(0, "return 0"), rep(1), rep(1), rep(1), rep(1) }),
+      ]], { i(1), i(2), i(3), i(4), rep(1), i(0, "return 0"), rep(1), rep(1), rep(1), rep(1) }),
         { condition = b }
     ),
 }

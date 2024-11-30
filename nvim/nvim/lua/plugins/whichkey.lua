@@ -22,6 +22,7 @@ local opts = {
 local setup = function(_, opts)
   require("which-key").add({
     { "<leader>b", group = "buffers" },
+    { "<leader>t", group = "Tab management" },
     { "<leader>v", group = "vim" },
     { "[",         group = "prev" },
     { "]",         group = "next" },

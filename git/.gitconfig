@@ -1,9 +1,11 @@
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
 [user]
     name = byhill
-	user = byhill
-	email = byhill.xi1ej@dralias.com
+    user = byhill
+    email = byhill.xi1ej@dralias.com
+
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = nvim
+    excludesfile = ~/.gitignore_global
+    editor = nvim

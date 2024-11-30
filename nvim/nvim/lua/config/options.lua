@@ -47,6 +47,7 @@ set.smartcase = true
 
 -- Save undo history
 set.undofile = true
+set.undolevels = 20000
 
 -- Update times
 set.updatetime = 2000

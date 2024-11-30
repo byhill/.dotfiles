@@ -17,6 +17,7 @@ end
 
 -- :help luasnip-config-options
 local opts = {
+  cut_selection_keys = '<Tab>',
   update_events = 'TextChanged,TextChangedI',
   enable_autosnippets = true,
 }
@@ -40,17 +41,30 @@ local setup = function(_, opts)
     end,
   })
 
-  inoremap("<Tab>", function()
-    if luasnip.expand_or_jumpable() then luasnip.expand_or_jump() end
-  end, { silent = true })
-  inoremap("<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
-  snoremap("<Tab>", function() luasnip.jump(1) end, { silent = true })
-  snoremap("<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
+
+  vim.cmd([[
+    "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+    "inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+    "
+    "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+    "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+  ]])
+
+  -- inoremap("<Tab>", function()
+  --   if luasnip.expand_or_jumpable() then
+  --     luasnip.expand_or_jump()
+  --   else
+  --     return '<Tab>'
+  --   end
+  -- end, { expr = true, silent = true })
+  -- inoremap("<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
+  -- snoremap("<Tab>", function() luasnip.jump(1) end, { silent = true })
+  -- snoremap("<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
 
   -- :help luasnip-loaders
   require("luasnip.loaders.from_lua").load({ paths = "./LuaSnip" })
   -- :help luasnip-loaders-edit_snippets
-  nnoremap('<leader>u', require('luasnip.loaders').edit_snippet_files)
+  nnoremap('<leader>p', require('luasnip.loaders').edit_snippet_files)
 
   luasnip.config.setup(opts)
 end
@@ -62,5 +76,6 @@ return {
     build = "make install_jsregexp",
     opts = opts,
     config = setup,
+    cond = true,
   }
 }
