@@ -71,8 +71,9 @@ end
 return {
   {
     'neovim/nvim-lspconfig',
-    config = function() setup() end,
+    config = setup,
     dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
       { 'j-hui/fidget.nvim', config = true, tag = "legacy", event = "LspAttach" },
       {
         'williamboman/mason-lspconfig.nvim',
