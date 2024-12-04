@@ -45,8 +45,6 @@ local setup = function()
     nmap('<leader>wa', buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
     nmap('<leader>wr', buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
     nmap('<leader>wf', listworkspace, '[W]orkspace List [F]olders')
-
-    command('Format', function() buf.format() end, 'Format current buffer with LSP')
   end
 
 
@@ -83,6 +81,7 @@ return {
         }
       },
     },
+    cond = true,
   },
 
   {

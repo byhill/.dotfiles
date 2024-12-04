@@ -104,5 +104,6 @@ return {
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-calc',
   },
-  config = setup
+  config = setup,
+  cond = true,
 }

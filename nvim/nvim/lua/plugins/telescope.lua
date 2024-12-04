@@ -57,4 +57,5 @@ return {
     },
   },
   config = setup,
+  cond = true,
 }

@@ -44,7 +44,6 @@ local init = function()
   command("FormatDisable", FormatDisable, { desc = "Disable format-on-save", bang = true })
 end
 
---------------------------------------------------------------------------------
 
 local format_on_save = function(bufnr)
   if vim.b[bufnr].autoformat == false or not vim.g.autoformat then
@@ -54,6 +53,7 @@ local format_on_save = function(bufnr)
   return {}
 end
 
+--------------------------------------------------------------------------------
 
 local opts = {
   formatters_by_ft = formatters,

@@ -13,6 +13,6 @@ mkdir ~/.config/zsh
 stow -vSt ~ git
 stow -vSt ~/.config helix
 stow -vSt ~/.julia julia
-stow -vSt ~/.config/nvim nvim
+stow -vSt ~/.config/nvim/nvim nvim
 stow -vSt ~ zsh
 ```

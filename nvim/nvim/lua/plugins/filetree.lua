@@ -7,7 +7,7 @@
 local opts = {
   use_default_mappings = false,
   close_if_last_window = true,
-  enable_diagnostics = true,
+  enable_diagnostics = false,
 
   sources = {
     "filesystem",
@@ -203,4 +203,5 @@ return {
   },
   opts = opts,
   config = setup,
+  cond = true,
 }

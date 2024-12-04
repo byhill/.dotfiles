@@ -47,4 +47,5 @@ return {
       desc = "Buffer Local Keymaps (which-key)",
     },
   },
+  cond = true,
 }

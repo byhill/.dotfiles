@@ -65,11 +65,32 @@ set.completeopt = 'menu,menuone,noselect,preview'
 -- Test
 set.confirm = true
 
+
+--------------------------------------------------------------------------------
+--- Neovim Diagnostic Options
+--------------------------------------------------------------------------------
+
+
+local diagnostic_signs = {
+  [vim.diagnostic.severity.ERROR] = '',
+  [vim.diagnostic.severity.WARN] = '',
+  [vim.diagnostic.severity.INFO] = '',
+  [vim.diagnostic.severity.HINT] = '',
+
+}
+
 -- :help vim.diagnostic.Opts
 vim.diagnostic.config({
-  virtual_text = false,
-  signs = true,
   underline = true,
+  virtual_text = false,
+  signs = {
+    text = diagnostic_signs,
+  },
+  float = {
+    prefix = function(diagnostic, i, _) return i .. ". [" .. diagnostic.source .. "] ", "" end,
+  },
   update_in_insert = false,
-  severity_sort = false,
+  severity_sort = true,
 })
+
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

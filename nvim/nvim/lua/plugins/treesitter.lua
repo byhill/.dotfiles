@@ -89,4 +89,5 @@ return {
   },
   opts = opts,
   config = setup,
+  cond = true,
 }

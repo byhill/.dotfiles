@@ -11,5 +11,6 @@ return {
     'JuliaEditorSupport/julia-vim',
     priority = 100,
     init = init,
+    cond = true,
   },
 }

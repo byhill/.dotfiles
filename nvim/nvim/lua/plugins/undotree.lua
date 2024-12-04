@@ -18,4 +18,5 @@ return {
   "mbbill/undotree",
   init = init,
   config = setup,
+  cond = true,
 }
