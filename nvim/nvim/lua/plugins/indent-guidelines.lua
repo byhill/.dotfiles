@@ -1,7 +1,8 @@
 --- https://github.com/lukas-reineke/indent-blankline.nvim
 
 local opts = {
-  indent = { char = "⎜" },
+  -- indent = { char = "⎜" },
+  indent = { char = "▏" },
   scope = {
     enabled = false,
   }

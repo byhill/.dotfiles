@@ -3,6 +3,10 @@
 -- For all defaults for neo-tree, see
 -- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/main/lua/neo-tree/defaults.lua
 
+local function nnoremap(input, output, options)
+  vim.keymap.set('n', input, output, options)
+end
+
 
 local opts = {
   use_default_mappings = false,
@@ -25,6 +29,7 @@ local opts = {
     },
     mappings = {
       ["?"] = "show_help",
+      ["<cr>"] = "open",
       ["q"] = "close_window",
       ["<esc>"] = "close_window",
       ["P"] = { "toggle_preview", config = { use_float = false } },
@@ -144,31 +149,21 @@ local opts = {
   },
 }
 
+
 local setup = function(_, opts)
-  vim.keymap.set('n', '<leader>e', ':Neotree toggle<cr>', {
-    desc = "[e]xplorer toggle (cwd)",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>E', ':Neotree position=current toggle<cr>', {
-    desc = "[E]xplorer toggle (current window)",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>be', ':Neotree source=buffers toggle<cr>', {
-    desc = "[b]uffer [e]xplorer",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>bE', ':Neotree source=buffers position=current toggle<cr>', {
-    desc = "[b]uffer [E]xplorer (current window)",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>ge', ':Neotree source=git_status toggle<cr>', {
-    desc = "[g]it [e]xplorer",
-    silent = true,
-  })
-  vim.keymap.set('n', '<leader>gE', ':Neotree source=git_status position=current toggle<cr>', {
-    desc = "[g]it [E]xplorer (current window)",
-    silent = true,
-  })
+  nnoremap('<leader>e', "<cmd>Neotree toggle<cr>", { desc = "[e]xplorer toggle (cwd)", silent = true })
+  nnoremap('<leader>E', "<cmd>Neotree position=current toggle<cr>",
+    { desc = "[E]xplorer toggle (current window)", silent = true })
+  nnoremap('<leader>be', "<cmd>Neotree source=buffers toggle<cr>", { desc = "[b]uffer [e]xplorer", silent = true })
+  nnoremap('<leader>bE', "<cmd>Neotree source=buffers position=current toggle<cr>",
+    { desc = "[b]uffer [E]xplorer (current window)", silent = true })
+  nnoremap('<leader>ge', "<cmd>Neotree source=git_status toggle<cr>", { desc = "[g]it [e]xplorer", silent = true, })
+  nnoremap('<leader>gE', "<cmd>Neotree source=git_status position=current toggle<cr>",
+    { desc = "[g]it [E]xplorer (current window)", silent = true, })
+
+  nnoremap('<leader>vd', '<cmd>cd ~/.dotfiles<cr><cmd>Neotree position=current<cr>')
+
+
 
   require("neo-tree").setup(opts)
 end

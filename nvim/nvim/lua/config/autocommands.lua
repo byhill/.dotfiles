@@ -13,7 +13,7 @@ autocmd('TextYankPost', {
 })
 
 
-autocmd('Filetype', {
+autocmd('BufReadPost', {
   desc = 'Open help in a vertical split to the left',
   pattern = { 'help' },
   command = "wincmd L",

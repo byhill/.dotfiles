@@ -11,7 +11,10 @@ set.autoindent = true
 
 -- Colourscheme
 set.termguicolors = true
-set.background = 'dark' -- 'light' or 'dark'
+set.background = 'light' -- 'light' or 'dark'
+
+-- Set cursor to blink in insert mode
+set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25-blinkon500,r-cr-o:hor20"
 
 -- Add line numbers and sign column
 set.number = true
@@ -61,10 +64,6 @@ set.keywordprg = ':help'
 -- Set completeopt to have a better completion experience
 set.completeopt = 'menu,menuone,noselect,preview'
 
--- Save buffer when quitting, changing focus to a different buffer, etc...
--- Test
-set.confirm = true
-
 
 --------------------------------------------------------------------------------
 --- Neovim Diagnostic Options
@@ -93,4 +92,4 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

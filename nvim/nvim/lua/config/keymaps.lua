@@ -19,6 +19,8 @@ nnoremap('U', '<c-R>')
 nnoremap('<c-R>', 'U')
 
 -- <leader>v commands
+nnoremap('<leader>vd', '<cmd>cd ~/.dotfiles<cr><cmd>edit .<cr>',
+  { silent = true, desc = "[v]im [e]dit, i.e., edit vimrc" })
 nnoremap('<leader>ve', ':edit $MYVIMRC<cr>', { silent = true, desc = "[v]im [e]dit, i.e., edit vimrc" })
 nnoremap('<leader>vw', ':echo @%<cr>', { desc = "[v]im [w]here, i.e., print current directory" })
 nnoremap('<leader>vh', ':cd %:h<cr>:pwd<cr>', { desc = "[v]im [h]ere, i.e., change currrent directory to here" })
@@ -72,8 +74,10 @@ nnoremap(']T', '<cmd>tablast<cr>', { desc = "Last Tab" })
 nnoremap('<leader>td', '<cmd>tabclose<cr>', { desc = "Delete tab" })
 nnoremap('<leader>to', '<cmd>tabonly<cr>', { desc = "Delete all other tabs" })
 nnoremap('<leader>t,', '<cmd>tabnext #<cr>', { desc = "Go to last accessed tab" })
+nnoremap('<leader>t#', '<cmd>tabnext #<cr>', { desc = "Go to last accessed tab" })
 nnoremap('<leader>tn', '<cmd>tabnew<cr>', { desc = "Open new blank tab" })
-nnoremap('<leader>t.', '<cmd>tab split<cr>', { desc = "Open current window in new tab" })
+nnoremap('<leader>t.', '<cmd>tab split<cr>', { desc = "Open current window in a new tab" })
+nnoremap('<leader>t;', '<cmd>wincmd T<cr>', { desc = "Open current window in a new tab and close window" })
 nnoremap('<leader>t0', '<cmd>tabmove 0<cr>', { desc = "Move current tab to the first" })
 nnoremap('<leader>t$', '<cmd>tabmove<cr>', { desc = "Move current tab to the last" })
 nnoremap('<leader>t1', '<cmd>tabnext 1<cr>', { desc = "Go to tab 1" })
@@ -86,6 +90,6 @@ nnoremap('<leader>t7', '<cmd>tabnext 7<cr>', { desc = "Go to tab 7" })
 nnoremap('<leader>t8', '<cmd>tabnext 8<cr>', { desc = "Go to tab 8" })
 nnoremap('<leader>t9', '<cmd>tabnext 9<cr>', { desc = "Go to tab 9" })
 
--- Indentating
-vnoremap('<', '<gv')
-vnoremap('>', '>gv')
+-- Command history
+-- Use <C-f> in command mode to see history
+-- nnoremap('q:', ':q', { desc = "Disable accidental command-history trigger when quitting" })

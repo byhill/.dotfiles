@@ -2,12 +2,10 @@
 -- List of sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 
 
-
 local setup = function()
   local luasnip = require('luasnip')
   local cmp = require('cmp')
   local m = cmp.mapping
-
 
   local has_words_before = function()
     unpack = unpack or table.unpack
@@ -62,12 +60,18 @@ local setup = function()
       disallow_symbol_nonprefix_matching = false,
     },
 
+    -- Some termial emulators don't support <S-Space> and <C-Space>,
+    -- and neovim doesn't reliably read these either.
+    -- You can map <S-Space> to <C-n>, etc...
+    -- in you terminal emulator if it supports it.
     mapping = {
       ['<CR>'] = m(m.confirm({ select = false }), { "i", "c" }),
       ['<S-Space>'] = m(picknext, { "i", "c", "s" }),
       ['<C-Space>'] = m(pickprev, { "i", "c", "s" }),
-      ['<C-d>'] = m(m.scroll_docs(-4), { "i", "c" }),
+      ['<C-n>'] = m(picknext, { "i", "c", "s" }), --keep
+      ['<C-p>'] = m(pickprev, { "i", "c", "s" }), --keep
       ['<C-f>'] = m(m.scroll_docs(4), { "i", "c" }),
+      ['<C-b>'] = m(m.scroll_docs(-4), { "i", "c" }),
       ['<C-e>'] = m(m.abort(), { "i", "c" }),
     },
 
@@ -76,9 +80,6 @@ local setup = function()
   cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' }
-    },
-    view = {
-      entries = { name = 'wildmenu', separator = ' | ' }
     },
   })
 

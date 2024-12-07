@@ -5,6 +5,7 @@
 local formatters = {
   julia = { "trim_newlines", lsp_format = "last" },
   lua = { lsp_format = "first" },
+  -- markdown = { "markdownlint-cli2" },
 
   -- All other filetypes NOT configured above.
   ["_"] = { "trim_newlines", "trim_whitespace" },

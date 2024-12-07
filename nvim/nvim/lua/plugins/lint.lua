@@ -67,6 +67,10 @@ local setup = function(_, opts)
     end
   end
 
+  -- Override default linters
+  -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint.lua
+  lint.linters_by_ft = opts.linters_by_ft
+
 
   function M.lint()
     if not vim.diagnostic.is_enabled({ bufnr = 0 }) then

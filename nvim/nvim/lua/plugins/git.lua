@@ -5,7 +5,15 @@ return {
   -- https://github.com/lewis6991/gitsigns.nvim
   {
     'lewis6991/gitsigns.nvim',
-    opts = {},
+    opts = {
+      signs = {
+        add = { text = '＋' },
+        change = { text = '～' },
+        delete = { text = '＿' },
+        topdelete = { text = '￣' },
+        changedelete = { text = '～' },
+      },
+    },
     cond = true,
   },
 }
