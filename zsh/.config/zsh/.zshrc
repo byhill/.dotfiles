@@ -210,3 +210,6 @@ export PATH="/Library/PostgreSQL/17/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/p10k/p10k.zsh.
+[[ ! -f ~/.config/zsh/p10k/p10k.zsh ]] || source ~/.config/zsh/p10k/p10k.zsh

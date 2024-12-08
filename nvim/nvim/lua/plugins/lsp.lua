@@ -16,6 +16,7 @@ local setup = function()
   local on_attach = function(client, bufnr)
     local buf = vim.lsp.buf
     local telescope = require('telescope.builtin')
+    local Snacks = require('snacks')
 
     local nmap = function(keys, func, desc)
       if desc then desc = 'LSP: ' .. desc end
@@ -34,8 +35,8 @@ local setup = function()
     nmap('<leader>rn', buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', buf.code_action, '[C]ode [A]ction')
     -- nmap('K', vim.lsp.buf.hover)
-    nmap('gd', buf.definition, '[G]oto [D]efinition')
-    nmap('gD', buf.declaration, '[G]oto [D]eclaration')
+    nmap('gd', buf.definition, '[g]oto local [d]efinition')
+    nmap('gD', buf.declaration, '[g]oto global [D]eclaration')
     nmap('gr', telescope.lsp_references, '[G]oto [R]eferences')
     nmap('gI', buf.implementation, '[G]oto [I]mplementation')
     nmap('gk', buf.hover, 'Hover Documentation')
@@ -45,6 +46,7 @@ local setup = function()
     nmap('<leader>wa', buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
     nmap('<leader>wr', buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
     nmap('<leader>wf', listworkspace, '[W]orkspace List [F]olders')
+    nmap("<leader>cR", Snacks.rename.rename_file, "Rename File")
   end
 
 
@@ -72,7 +74,7 @@ return {
     config = setup,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-      { 'j-hui/fidget.nvim', config = true, tag = "legacy", event = "LspAttach" },
+      { 'j-hui/fidget.nvim', config = true, event = "LspAttach" },
       {
         'williamboman/mason-lspconfig.nvim',
         opts = { ensure_installed = vim.tbl_keys(servers) },
@@ -80,6 +82,7 @@ return {
           { 'williamboman/mason.nvim', config = true },
         }
       },
+      "folke/snacks.nvim",
     },
     cond = true,
   },

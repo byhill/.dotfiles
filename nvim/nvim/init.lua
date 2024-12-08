@@ -34,7 +34,7 @@ require('lazy').setup('plugins', {
     enabled = false,
   },
   install = {
-    colorscheme = { "melange" },
+    colorscheme = { "bamboo" },
   },
   rocks = {
     enable = false,
