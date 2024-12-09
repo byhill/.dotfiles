@@ -15,8 +15,15 @@ local setup = function(_, opts) require("nvim-treesitter.configs").setup(opts) e
 local opts = {
 
   ensure_installed = {
+    'bash',
     'c',
+    'css',
+    'diff',
+    'gitignore',
+    'html',
+    'htmldjango',
     'javascript',
+    'json',
     'julia',
     'lua',
     'luadoc',
@@ -24,7 +31,9 @@ local opts = {
     'markdown',
     'markdown_inline',
     'python',
+    'query',
     'rust',
+    'toml',
     'vim',
     'vimdoc',
   },

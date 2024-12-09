@@ -19,4 +19,4 @@ local function nnoremap(input, output, options)
   vim.keymap.set("n", input, output, options)
 end
 
-nnoremap("<leader>l", "<cmd>Lazy<cr>", { silent = true, desc = "[l]azy package manager" })
+nnoremap("<leader>z", "<cmd>Lazy<cr>", { silent = true, desc = "la[z]y package manager" })

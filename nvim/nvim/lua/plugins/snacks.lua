@@ -5,6 +5,6 @@ local opts = {
 
 return {
   "folke/snacks.nvim",
-  priority = 900, -- make priority higher
+  priority = 1000, -- make priority higher
   opts = opts,
 }

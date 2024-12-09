@@ -37,10 +37,10 @@ local setup = function()
     -- nmap('K', vim.lsp.buf.hover)
     nmap('gd', buf.definition, '[g]oto local [d]efinition')
     nmap('gD', buf.declaration, '[g]oto global [D]eclaration')
-    nmap('gr', telescope.lsp_references, '[G]oto [R]eferences')
-    nmap('gI', buf.implementation, '[G]oto [I]mplementation')
+    nmap('gr', telescope.lsp_references, '[g]oto [r]eferences')
+    nmap('gI', buf.implementation, '[g]oto [I]mplementation')
     nmap('gk', buf.hover, 'Hover Documentation')
-    nmap('<leader>D', buf.type_definition, 'Type [D]efinition')
+    nmap('gy', buf.type_definition, '[g]oto t[y]pe definition')
     nmap('<leader>ds', telescope.lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
     nmap('<leader>wa', buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -73,7 +73,7 @@ return {
     'neovim/nvim-lspconfig',
     config = setup,
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/nvim-cmp',
       { 'j-hui/fidget.nvim', config = true, event = "LspAttach" },
       {
         'williamboman/mason-lspconfig.nvim',

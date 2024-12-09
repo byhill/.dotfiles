@@ -8,5 +8,5 @@ return {
             { i(0, "TODO") }
         ),
         { condition = b }
-    )
+    ),
 }
