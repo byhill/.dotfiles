@@ -33,6 +33,7 @@ local opts = {
     'python',
     'query',
     'rust',
+    'scss',
     'toml',
     'vim',
     'vimdoc',
