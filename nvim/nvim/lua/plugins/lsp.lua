@@ -53,7 +53,7 @@ local setup = function()
     nmap("<leader>cl", vim.lsp.codelens.run, "Show CodeLens")
     nmap("<leader>cC", vim.lsp.codelens.refresh, "Refresh and Display CodeLens")
     nmap("<leader>cR", Snacks.rename.rename_file, "Rename File")
-    nmap('<leader>rn', buf.rename, '[R]e[n]ame')
+    nmap('<leader>cr', buf.rename, 'Rename Symbol')
   end
 
 
