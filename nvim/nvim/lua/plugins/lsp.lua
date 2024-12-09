@@ -22,31 +22,38 @@ local setup = function()
       if desc then desc = 'LSP: ' .. desc end
       vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
-
-    local command = function(name, f, desc)
-      vim.api.nvim_buf_create_user_command(bufnr, name, f, { desc = desc })
+    local imap = function(keys, func, desc)
+      if desc then desc = 'LSP: ' .. desc end
+      vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
     end
+
 
     local listworkspace = function() print(vim.inspect(buf.list_workspace_folders())) end
 
     -- This disables semantic highlighting.
     -- client.server_capabilities.semanticTokensProvider = nil
 
-    nmap('<leader>rn', buf.rename, '[R]e[n]ame')
-    nmap('<leader>ca', buf.code_action, '[C]ode [A]ction')
-    -- nmap('K', vim.lsp.buf.hover)
+    nmap('K', vim.lsp.buf.hover, "Hover")
+    nmap("gK", vim.lsp.buf.signature_help, "Signature Help")
+    imap("<C-k>", vim.lsp.buf.signature_help, "Signature Help")
     nmap('gd', buf.definition, '[g]oto local [d]efinition')
     nmap('gD', buf.declaration, '[g]oto global [D]eclaration')
-    nmap('gr', telescope.lsp_references, '[g]oto [r]eferences')
+    nmap('gr', buf.references, '[g]oto [r]eferences')
     nmap('gI', buf.implementation, '[g]oto [I]mplementation')
     nmap('gk', buf.hover, 'Hover Documentation')
     nmap('gy', buf.type_definition, '[g]oto t[y]pe definition')
+
     nmap('<leader>ds', telescope.lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
     nmap('<leader>wa', buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
     nmap('<leader>wr', buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
     nmap('<leader>wf', listworkspace, '[W]orkspace List [F]olders')
+
+    nmap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+    nmap("<leader>cl", vim.lsp.codelens.run, "Show CodeLens")
+    nmap("<leader>cC", vim.lsp.codelens.refresh, "Refresh and Display CodeLens")
     nmap("<leader>cR", Snacks.rename.rename_file, "Rename File")
+    nmap('<leader>rn', buf.rename, '[R]e[n]ame')
   end
 
 
