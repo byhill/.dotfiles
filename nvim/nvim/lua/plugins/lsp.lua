@@ -1,13 +1,15 @@
 -- LSP settings.
 
 -- Keys are the servers, values are the server configuration schema.
-local servers = {
+local server_settings = {
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
     },
   },
-  julials = {}
+  julials = {},
+  ruff = {},
+  basedpyright = {},
 }
 
 
@@ -65,13 +67,27 @@ local setup = function()
   -- Setup each LSP server
   local mason_lsp = require('mason-lspconfig')
   mason_lsp.setup_handlers {
+
+    -- Default handler
     function(server_name)
       require('lspconfig')[server_name].setup {
         capabilities = capabilities,
         on_attach = on_attach,
-        settings = servers[server_name],
+        settings = server_settings[server_name],
       }
     end,
+
+    ["ruff"] = function()
+      require("lspconfig").ruff.setup {
+        -- Don't add capabilities = capabilities
+        -- We don't want ruff to provide hover or completion capabilities
+        on_attach = function(client, bufnr)
+          on_attach(client, bufnr)
+          client.server_capabilities.hoverProvider = false
+        end,
+        settings = server_settings["ruff"],
+      }
+    end
   }
 end
 
@@ -84,7 +100,7 @@ return {
       { 'j-hui/fidget.nvim', config = true, event = "LspAttach" },
       {
         'williamboman/mason-lspconfig.nvim',
-        opts = { ensure_installed = vim.tbl_keys(servers) },
+        opts = {},
         dependencies = {
           { 'williamboman/mason.nvim', config = true },
         }

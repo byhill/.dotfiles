@@ -87,6 +87,7 @@ vim.diagnostic.config({
   },
   float = {
     prefix = function(diagnostic, i, _) return i .. ". [" .. diagnostic.source .. "] ", "" end,
+    border = "double",
   },
   update_in_insert = false,
   severity_sort = true,
