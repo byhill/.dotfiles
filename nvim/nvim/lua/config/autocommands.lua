@@ -44,6 +44,13 @@ autocmd("FileType", {
 })
 
 
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNewFile' }, {
+  pattern = '.env*',
+  command = 'set filetype=sh',
+})
+
+
 -- -- Autosave when no activity occurs
 -- autocmd({ 'CursorHold', 'CursorHoldI' }, {
 --   command = "silent! :write",
