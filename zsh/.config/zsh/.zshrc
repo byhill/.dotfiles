@@ -205,7 +205,7 @@ export PATH="/Library/PostgreSQL/17/bin:$PATH"
 # sudo pmset -a disablesleep 1
 
 ##############################################################################
-### Nvm
+### Nvm  (Node version manager)
 ##############################################################################
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -213,3 +213,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/p10k/p10k.zsh.
 [[ ! -f ~/.config/zsh/p10k/p10k.zsh ]] || source ~/.config/zsh/p10k/p10k.zsh
+
+
+##############################################################################
+### flyctl
+##############################################################################
+export FLYCTL_INSTALL="/Users/byhill/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
