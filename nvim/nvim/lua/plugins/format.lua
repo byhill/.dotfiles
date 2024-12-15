@@ -41,7 +41,7 @@ end
 local init = function()
   vim.g.autoformat = true
   command("Format", function() require("conform").format({ async = true }) end, { desc = "Format buffer" })
-  command("FormatInfo", "<cmd>ConformInfo<cr>", { desc = "Format info" })
+  command("FormatInfo", "ConformInfo", { desc = "Format info" })
   command("FormatEnable", FormatEnable, { desc = "Enable format-on-save" })
   command("FormatDisable", FormatDisable, { desc = "Disable format-on-save", bang = true })
 end
